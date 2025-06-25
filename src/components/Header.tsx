@@ -20,6 +20,7 @@ const Header = () => {
     { href: '#experiencia', label: 'Experiência' },
     { href: '#projetos', label: 'Projetos' },
     { href: '#contato', label: 'Contato' },
+     { href: '/blogs', label: 'Blogs' }
   ];
 
   return (
