@@ -21,8 +21,9 @@ const Hero = () => {
         </div>
 
         <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-          Sou um desenvolvedor com foco em <span className="text-primary font-medium">Back-end</span>, trabalho com APIs, bancos de dados, testes automatizados e conteinerização. Meu objetivo é criar soluções escaláveis.
+          Sou um desenvolvedor com foco em <span className="text-primary font-medium">Back-end</span>, mas com experiência em diversas áreas da tecnologia. Me interesso por projetos de diversas áreas, sempre aberto a novos desafios. Busco criar soluções escaláveis, bem estruturadas e com foco em qualidade e eficiência.
         </p>
+
 
         <div className="flex justify-center space-x-6">
           <a
