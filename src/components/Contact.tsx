@@ -1,8 +1,36 @@
-
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
+  const form = useRef();
+  const [loading, setLoading] = useState(false);
+  const [messageSent, setMessageSent] = useState(false);
+  const [error, setError] = useState(null);
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+
+       emailjs.sendForm(
+      'service_keu4u8j', // substitua pelo seu Service ID
+      'template_67waoir', // substitua pelo seu Template ID
+      form.current,
+      'mRTpGKM0niZlV0vPo' // substitua pela sua Public Key
+    )
+    .then(() => {
+      setLoading(false);
+      setMessageSent(true);
+      e.target.reset();
+    })
+    .catch((err) => {
+      setLoading(false);
+      setError('Erro ao enviar mensagem. Por favor, tente novamente.');
+      console.error(err);
+    });
+  };
+
   return (
     <section id="contato" className="py-20 section-padding bg-muted/30">
       <div className="max-w-4xl mx-auto">
@@ -61,28 +89,32 @@ const Contact = () => {
 
             {/* Contact Form */}
             <div className="animate-fade-in">
-              <form className="space-y-6">
+              <form ref={form} onSubmit={sendEmail} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                    <label htmlFor="user_name" className="block text-sm font-medium text-foreground mb-2">
                       Nome
                     </label>
                     <input
                       type="text"
-                      id="name"
+                      id="user_name"
+                      name="from_name"
                       className="w-full px-4 py-3 rounded-lg bg-card border border-border focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
                       placeholder="Seu nome"
+                      required
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                    <label htmlFor="user_email" className="block text-sm font-medium text-foreground mb-2">
                       Email
                     </label>
                     <input
                       type="email"
-                      id="email"
+                      id="user_email"
+                      name="reply_to"
                       className="w-full px-4 py-3 rounded-lg bg-card border border-border focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
                       placeholder="seu@email.com"
+                      required
                     />
                   </div>
                 </div>
@@ -94,8 +126,10 @@ const Contact = () => {
                   <input
                     type="text"
                     id="subject"
+                    name="subject"
                     className="w-full px-4 py-3 rounded-lg bg-card border border-border focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200"
                     placeholder="Assunto da mensagem"
+                    required
                   />
                 </div>
                 
@@ -105,19 +139,28 @@ const Contact = () => {
                   </label>
                   <textarea
                     id="message"
+                    name="message"
                     rows={5}
                     className="w-full px-4 py-3 rounded-lg bg-card border border-border focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 resize-none"
                     placeholder="Sua mensagem..."
+                    required
                   ></textarea>
                 </div>
                 
                 <button
                   type="submit"
+                  disabled={loading}
                   className="w-full bg-gradient-to-r from-primary to-secondary text-primary-foreground py-3 px-6 rounded-lg font-medium hover:opacity-90 transition-opacity duration-200 flex items-center justify-center space-x-2 group"
                 >
-                  <span>Enviar Mensagem</span>
+                  <span>{loading ? 'Enviando...' : 'Enviar Mensagem'}</span>
                   <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
                 </button>
+                {messageSent && (
+                  <p className="text-green-500 mt-4">Mensagem enviada com sucesso!</p>
+                )}
+                {error && (
+                  <p className="text-red-500 mt-4">{error}</p>
+                )}
               </form>
             </div>
           </div>
@@ -128,3 +171,5 @@ const Contact = () => {
 };
 
 export default Contact;
+
+

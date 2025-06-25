@@ -34,7 +34,7 @@ const Header = () => {
             href="#"
             className="text-2xl font-bold text-gradient hover:scale-105 transition-transform duration-200"
           >
-            Portfolio
+             jpmoreiradev.com.br
           </a>
 
           {/* Desktop Navigation */}
