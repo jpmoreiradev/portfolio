@@ -1,10 +1,10 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isBlogPage, setIsBlogPage] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,13 +15,25 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = [
-    { href: '#sobre', label: 'Sobre' },
-    { href: '#experiencia', label: 'Experiência' },
-    { href: '#projetos', label: 'Projetos' },
-    { href: '#contato', label: 'Contato' },
-     { href: '/blogs', label: 'Blogs' }
-  ];
+  // Detecta se está na página de blog
+  useEffect(() => {
+    const currentPath = window.location.pathname;
+    setIsBlogPage(currentPath === '/blogs');
+  }, []);
+
+  
+  const blogHeader = [{ href: '/', label: 'Voltar' }]
+  const homeHeader =  [
+        { href: '#', label: 'Sobre' },
+        { href: '#experiencia', label: 'Experiência' },
+        { href: '#projetos', label: 'Projetos' },
+        { href: '#contato', label: 'Contato' },
+        { href: '/blogs', label: 'Blogs' },
+      ]
+ 
+  const navItems = isBlogPage
+    ? blogHeader
+    : homeHeader;
 
   return (
     <header
@@ -32,10 +44,10 @@ const Header = () => {
       <nav className="section-padding py-4">
         <div className="flex justify-between items-center">
           <a
-            href="#"
+            href="/"
             className="text-2xl font-bold text-gradient hover:scale-105 transition-transform duration-200"
           >
-             jpmoreiradev.com.br
+            jpmoreiradev.com.br
           </a>
 
           {/* Desktop Navigation */}
