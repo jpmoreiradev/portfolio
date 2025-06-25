@@ -2,12 +2,14 @@
 import React from 'react';
 import { Github, ExternalLink } from 'lucide-react';
 
+import uniStoreImg from '../assets/images/sessionProjects/unistore.png'
+
 const Projects = () => {
   const projects = [
     {
       title: 'UNISTORE E-commerce Platform',
       description: 'Neste projeto, foi desenvolvida uma loja online utilizando a API do Mercado Livre. A ideia era aproveitar as funcionalidades e o amplo catálogo de produtos disponíveis na plataforma para construir uma loja virtual própria.',
-      image: 'https://private-user-images.githubusercontent.com/78699072/453610671-ba56a42b-7fff-4a85-bdcb-866e8d4c2023.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDk1ODE3NjQsIm5iZiI6MTc0OTU4MTQ2NCwicGF0aCI6Ii83ODY5OTA3Mi80NTM2MTA2NzEtYmE1NmE0MmItN2ZmZi00YTg1LWJkY2ItODY2ZThkNGMyMDIzLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA2MTAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNjEwVDE4NTEwNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTU1OTI4NzBhNjRkODNkZWNhYmM1ZjkzNTZmZDZlMWM3ZjQ3MzkyOWJiOTIxZDdkZjRlZGM4ODAxZWZmN2EyNzkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.W_WdDFrr7cWt46W1Uct8rpDd3gI0-u9jywpwy1-8vvk',
+      image: uniStoreImg,
       technologies: [ "Axios", "Bcryptjs", "Crypto", "Dotenv", "Express", "Jsonwebtoken",  "Sequelize"],
       github: 'https://github.com/jpmoreiradev/unistore',
       // live: '',
