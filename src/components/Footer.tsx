@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="text-center space-y-6">
           <div className="flex justify-center space-x-6">
             <a
-              href="https://github.com"
+              href="https://github.com/jpmoreiradev"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-lg border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110"
@@ -17,7 +17,7 @@ const Footer = () => {
               <Github size={20} />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/jo%C3%A3o-pedro-moreira-455b79203/"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-lg border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110"
@@ -25,7 +25,7 @@ const Footer = () => {
               <Linkedin size={20} />
             </a>
             <a
-              href="mailto:seu@email.com"
+              href="mailto:jp02120123@gmail.com"
               className="p-3 rounded-lg border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110"
             >
               <Mail size={20} />
