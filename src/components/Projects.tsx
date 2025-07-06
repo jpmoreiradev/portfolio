@@ -1,20 +1,60 @@
-
 import React from 'react';
 import { Github, ExternalLink } from 'lucide-react';
 
-import uniStoreImg from '../assets/images/sessionProjects/unistore.png'
+import uniStoreImg from '../assets/images/sessionProjects/unistore.png';
+import crudNestJsImg from '../assets/images/sessionProjects/crudnestjs.png';
 
 const Projects = () => {
   const projects = [
+     {
+      title: 'NestJS CRUD API',
+      description:
+        'API CRUD com NestJS, Prisma e autenticação segura. Senhas criptografadas com bcrypt e arquitetura escalável com TypeScript.',
+      image: crudNestJsImg,
+      technologies: [
+        'NestJS',
+        'Prisma',
+        'TypeScript',
+        'PostgreSQL',
+        'ESLint',
+        'Prettier',
+        'Bcryptjs',
+      ],
+      github: 'https://github.com/jpmoreiradev/nestjs-crud',
+    },
     {
       title: 'UNISTORE E-commerce Platform',
-      description: 'Neste projeto, foi desenvolvida uma loja online utilizando a API do Mercado Livre. A ideia era aproveitar as funcionalidades e o amplo catálogo de produtos disponíveis na plataforma para construir uma loja virtual própria.',
+      description:
+        'Neste projeto, foi desenvolvida uma loja online utilizando a API do Mercado Livre. A ideia era aproveitar as funcionalidades e o amplo catálogo de produtos disponíveis na plataforma para construir uma loja virtual própria.',
       image: uniStoreImg,
-      technologies: [ "Axios", "Bcryptjs", "Crypto", "Dotenv", "Express", "Jsonwebtoken",  "Sequelize"],
+      technologies: [
+        'Axios',
+        'Bcryptjs',
+        'Crypto',
+        'Dotenv',
+        'Express',
+        'Jsonwebtoken',
+        'Sequelize',
+      ],
       github: 'https://github.com/jpmoreiradev/unistore',
       // live: '',
     },
   ];
+
+  const techLinks: Record<string, string> = {
+    Prettier: 'https://prettier.io/',
+    ESLint: 'https://eslint.org/',
+    TypeScript: 'https://www.typescriptlang.org/',
+    Prisma: 'https://www.prisma.io/',
+    NestJS: 'https://nestjs.com/',
+    Axios: 'https://axios-http.com/',
+    Bcryptjs: 'https://github.com/dcodeIO/bcrypt.js/',
+    Crypto: 'https://nodejs.org/api/crypto.html',
+    Dotenv: 'https://github.com/motdotla/dotenv',
+    Express: 'https://expressjs.com/',
+    Jsonwebtoken: 'https://github.com/auth0/node-jsonwebtoken',
+    Sequelize: 'https://sequelize.org/',
+  };
 
   return (
     <section id="projetos" className="py-20 section-padding">
@@ -35,8 +75,12 @@ const Projects = () => {
                   index % 2 === 1 ? 'md:grid-flow-col-dense' : ''
                 }`}
               >
-                {/* Image */}
-                <div className={`relative group ${index % 2 === 1 ? 'md:col-start-2' : ''}`}>
+                {/* Imagem */}
+                <div
+                  className={`relative group ${
+                    index % 2 === 1 ? 'md:col-start-2' : ''
+                  }`}
+                >
                   <div className="aspect-video rounded-lg overflow-hidden bg-card border border-border">
                     <img
                       src={project.image}
@@ -47,11 +91,17 @@ const Projects = () => {
                   <div className="absolute inset-0 bg-primary/20 rounded-lg group-hover:bg-transparent transition-colors duration-300"></div>
                 </div>
 
-                {/* Content */}
-                <div className={`space-y-4 ${index % 2 === 1 ? 'md:col-start-1 md:row-start-1' : ''}`}>
+                {/* Conteúdo */}
+                <div
+                  className={`space-y-4 ${
+                    index % 2 === 1 ? 'md:col-start-1 md:row-start-1' : ''
+                  }`}
+                >
                   <div>
                     <p className="text-primary text-sm font-medium">Projeto em Destaque</p>
-                    <h3 className="text-2xl font-bold text-foreground">{project.title}</h3>
+                    <h3 className="text-2xl font-bold text-foreground">
+                      {project.title}
+                    </h3>
                   </div>
 
                   <div className="bg-card p-6 rounded-lg border border-border">
@@ -60,12 +110,15 @@ const Projects = () => {
 
                   <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech) => (
-                      <span
+                      <a
                         key={tech}
-                        className="px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-full"
+                        href={techLinks[tech] || '#'}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-full hover:underline"
                       >
                         {tech}
-                      </span>
+                      </a>
                     ))}
                   </div>
 
@@ -78,7 +131,7 @@ const Projects = () => {
                     >
                       <Github size={20} />
                     </a>
-                    
+
                     {/* <a
                       href={project.live}
                       target="_blank"
@@ -87,7 +140,6 @@ const Projects = () => {
                     >
                       <ExternalLink size={20} />
                     </a> */}
-                    
                   </div>
                 </div>
               </div>

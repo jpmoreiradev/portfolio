@@ -34,7 +34,7 @@ const posts: Post[] = [
    {
     id: 8,
     title: 'Configurando deploy automático',
-    summary: 'Configurei o GitHub Actions para deploy automático no Netlify sempre que faço push no repositório. Automatizando o fluxo.',
+    summary: 'Configurei o GitHub Actions para deploy automático no Vercel sempre que faço push no repositório. Automatizando o fluxo.',
     date: '23 de Junho de 2025',
     emoji: '🤖',
   },
