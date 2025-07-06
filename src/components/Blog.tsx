@@ -10,6 +10,13 @@ type Post = {
 
 const posts: Post[] = [
   {
+    id: 12,
+    title: 'Adicionei um projeto de CRUD NestJS no portfólio e adicionei melhorias no mesmo',
+    summary: 'Adicionei o projeto CRUD com NestJS e Prisma no portfólio, incluindo detalhes sobre a criptografia de senhas com bcrypt. Fiz ajustes nos textos, corrigi erros de tipagem e ESLint, além de pequenas melhorias visuais e na organização do código.',
+    date: '05 de Julho de 2025',
+    emoji: '🛠️',
+  },
+  {
     id: 11,
     title: 'Finalizando detalhes e testes',
     summary: 'Revisei o portfólio completo, corrigi bugs, testei responsividade em vários dispositivos e preparei para o deploy final.',
