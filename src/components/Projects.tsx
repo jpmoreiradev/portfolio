@@ -3,6 +3,8 @@ import { Github, ExternalLink } from 'lucide-react';
 
 import uniStoreImg from '../assets/images/sessionProjects/unistore.png';
 import crudNestJsImg from '../assets/images/sessionProjects/crudnestjs.png';
+import investmentCalculatorImg from '../assets/images/sessionProjects/investmentcalculator.png';
+
 
 const Projects = () => {
   const projects = [
@@ -39,6 +41,21 @@ const Projects = () => {
       github: 'https://github.com/jpmoreiradev/unistore',
       // live: '',
     },
+    {
+    title: 'Calculadora de Investimento',
+    description:
+      'Uma calculadora interativa que simula investimentos com aportes mensais, taxa de juros composta e desconto de imposto de renda. Desenvolvida com React e Tailwind CSS.',
+    image: investmentCalculatorImg,
+    technologies: [
+      'React',
+      'TypeScript',
+      'Tailwind CSS',
+      'Hooks',
+      'Vite',
+    ],
+    github: 'https://github.com/jpmoreiradev/investment-calculator', // substitua pela URL real se necessário
+    live: 'https://jpmoreiradev.com.br/projects/investment-calculator'
+  },
   ];
 
   const techLinks: Record<string, string> = {
@@ -132,14 +149,16 @@ const Projects = () => {
                       <Github size={20} />
                     </a>
 
-                    {/* <a
+                   {project.live && (
+                    <a
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-2 rounded-lg border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110"
                     >
                       <ExternalLink size={20} />
-                    </a> */}
+                    </a>
+                    )}
                   </div>
                 </div>
               </div>
