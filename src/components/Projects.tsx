@@ -15,7 +15,7 @@ const Projects = () => {
       technologies: [
         'React',
         'TypeScript',
-        'Tailwind CSS',
+        'TailwindCSS',
         'Hooks',
         'Vite',
       ],
@@ -72,6 +72,10 @@ const Projects = () => {
     Express: 'https://expressjs.com/',
     Jsonwebtoken: 'https://github.com/auth0/node-jsonwebtoken',
     Sequelize: 'https://sequelize.org/',
+    React: "https://react.dev/",
+    TailwindCSS: "https://tailwindcss.com/",
+    Hooks: "https://react.dev/reference/react/hooks",
+    Vite: "https://vite.dev/"
   };
 
   return (
