@@ -10,6 +10,13 @@ type Post = {
 
 const posts: Post[] = [
   {
+    id: 14,
+    title: 'Adicionei destaque para projetos com versão live no portfólio',
+    summary: 'Implementei um destaque visual para os projetos que possuem link live, adicionando borda colorida, sombra e selo "LIVE" na imagem. Isso facilita a identificação dos projetos interativos e melhora a experiência dos visitantes.',
+    date: '08 de Julho de 2025',
+    emoji: '✨',
+  },
+  {
     id: 13,
     title: 'Adicionei a Calculadora de Investimento interativa ao portfólio',
     summary: 'Desenvolvi uma calculadora de investimento usando React e Tailwind CSS, que simula aportes mensais, taxa de juros compostos e desconta imposto de renda. Inclui tabela detalhada de rendimentos e saldo ao longo do tempo.',
