@@ -53,7 +53,7 @@ const Projects = () => {
       'Hooks',
       'Vite',
     ],
-    github: 'https://github.com/jpmoreiradev/investment-calculator', // substitua pela URL real se necessário
+    github: 'https://github.com/jpmoreiradev/portfolio/blob/main/src/components/projects/InvestmentCalculator.tsx', 
     live: 'https://jpmoreiradev.com.br/projects/investment-calculator'
   },
   ];

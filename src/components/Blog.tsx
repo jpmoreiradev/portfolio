@@ -10,6 +10,13 @@ type Post = {
 
 const posts: Post[] = [
   {
+    id: 13,
+    title: 'Adicionei a Calculadora de Investimento interativa ao portfólio',
+    summary: 'Desenvolvi uma calculadora de investimento usando React e Tailwind CSS, que simula aportes mensais, taxa de juros compostos e desconta imposto de renda. Inclui tabela detalhada de rendimentos e saldo ao longo do tempo.',
+    date: '07 de Julho de 2025',
+    emoji: '📈',
+  },
+  {
     id: 12,
     title: 'Adicionei um projeto de CRUD NestJS no portfólio e adicionei melhorias no mesmo',
     summary: 'Adicionei o projeto CRUD com NestJS e Prisma no portfólio, incluindo detalhes sobre a criptografia de senhas com bcrypt. Fiz ajustes nos textos, corrigi erros de tipagem e ESLint, além de pequenas melhorias visuais e na organização do código.',
