@@ -5,6 +5,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isBlogPage, setIsBlogPage] = useState(false);
+  const [isProjectsPage, setIsProjectsPage] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,10 +20,11 @@ const Header = () => {
   useEffect(() => {
     const currentPath = window.location.pathname;
     setIsBlogPage(currentPath === '/blogs');
+    setIsProjectsPage(currentPath === '/projects/investment-calculator');
   }, []);
 
   
-  const blogHeader = [{ href: '/', label: 'Voltar' }]
+  const returnHeader = [{ href: '/', label: 'Voltar' }]
   const homeHeader =  [
         { href: '#', label: 'Sobre' },
         { href: '#experiencia', label: 'Experiência' },
@@ -31,8 +33,8 @@ const Header = () => {
         { href: '/blogs', label: 'Blogs' },
       ]
  
-  const navItems = isBlogPage
-    ? blogHeader
+  const navItems = isBlogPage || isProjectsPage
+    ? returnHeader
     : homeHeader;
 
   return (

@@ -5,10 +5,25 @@ import uniStoreImg from '../assets/images/sessionProjects/unistore.png';
 import crudNestJsImg from '../assets/images/sessionProjects/crudnestjs.png';
 import investmentCalculatorImg from '../assets/images/sessionProjects/investmentcalculator.png';
 
-
 const Projects = () => {
   const projects = [
      {
+      title: 'Calculadora de Investimento',
+      description:
+        'Uma calculadora interativa que simula investimentos com aportes mensais, taxa de juros composta e desconto de imposto de renda. Desenvolvida com React e Tailwind CSS.',
+      image: investmentCalculatorImg,
+      technologies: [
+        'React',
+        'TypeScript',
+        'Tailwind CSS',
+        'Hooks',
+        'Vite',
+      ],
+      github:
+        'https://github.com/jpmoreiradev/portfolio/blob/main/src/components/projects/InvestmentCalculator.tsx',
+      live: 'https://jpmoreiradev.com.br/projects/investment-calculator',
+    },
+    {
       title: 'NestJS CRUD API',
       description:
         'API CRUD com NestJS, Prisma e autenticação segura. Senhas criptografadas com bcrypt e arquitetura escalável com TypeScript.',
@@ -41,21 +56,7 @@ const Projects = () => {
       github: 'https://github.com/jpmoreiradev/unistore',
       // live: '',
     },
-    {
-    title: 'Calculadora de Investimento',
-    description:
-      'Uma calculadora interativa que simula investimentos com aportes mensais, taxa de juros composta e desconto de imposto de renda. Desenvolvida com React e Tailwind CSS.',
-    image: investmentCalculatorImg,
-    technologies: [
-      'React',
-      'TypeScript',
-      'Tailwind CSS',
-      'Hooks',
-      'Vite',
-    ],
-    github: 'https://github.com/jpmoreiradev/portfolio/blob/main/src/components/projects/InvestmentCalculator.tsx', 
-    live: 'https://jpmoreiradev.com.br/projects/investment-calculator'
-  },
+   
   ];
 
   const techLinks: Record<string, string> = {
@@ -85,84 +86,95 @@ const Projects = () => {
           </div>
 
           <div className="space-y-16">
-            {projects.map((project, index) => (
-              <div
-                key={index}
-                className={`grid md:grid-cols-2 gap-8 items-center animate-fade-in ${
-                  index % 2 === 1 ? 'md:grid-flow-col-dense' : ''
-                }`}
-              >
-                {/* Imagem */}
+            {projects.map((project, index) => {
+              const hasLive = !!project.live;
+
+              return (
                 <div
-                  className={`relative group ${
-                    index % 2 === 1 ? 'md:col-start-2' : ''
-                  }`}
+                  key={index}
+                  className={`grid md:grid-cols-2 gap-8 items-center animate-fade-in ${
+                    index % 2 === 1 ? 'md:grid-flow-col-dense' : ''
+                  } ${hasLive ? 'border-2 border-green-500 shadow-lg rounded-lg' : ''}`}
                 >
-                  <div className="aspect-video rounded-lg overflow-hidden bg-card border border-border">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <div className="absolute inset-0 bg-primary/20 rounded-lg group-hover:bg-transparent transition-colors duration-300"></div>
-                </div>
-
-                {/* Conteúdo */}
-                <div
-                  className={`space-y-4 ${
-                    index % 2 === 1 ? 'md:col-start-1 md:row-start-1' : ''
-                  }`}
-                >
-                  <div>
-                    <p className="text-primary text-sm font-medium">Projeto em Destaque</p>
-                    <h3 className="text-2xl font-bold text-foreground">
-                      {project.title}
-                    </h3>
+                  {/* Imagem */}
+                  <div
+                    className={`relative group ${
+                      index % 2 === 1 ? 'md:col-start-2' : ''
+                    }`}
+                  >
+                    <div className="aspect-video rounded-lg overflow-hidden bg-card border border-border relative">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      {hasLive && (
+                        <span className="absolute top-2 left-2 bg-green-500 text-white text-xs font-semibold px-2 py-1 rounded">
+                          LIVE
+                        </span>
+                      )}
+                    </div>
+                    <div className="absolute inset-0 bg-primary/20 rounded-lg group-hover:bg-transparent transition-colors duration-300"></div>
                   </div>
 
-                  <div className="bg-card p-6 rounded-lg border border-border">
-                    <p className="text-muted-foreground">{project.description}</p>
-                  </div>
+                  {/* Conteúdo */}
+                  <div
+                    className={`space-y-4 ${
+                      index % 2 === 1 ? 'md:col-start-1 md:row-start-1' : ''
+                    }`}
+                  >
+                    <div>
+                      <p className="text-primary text-sm font-medium">
+                        Projeto em Destaque
+                      </p>
+                      <h3 className="text-2xl font-bold text-foreground">
+                        {project.title}
+                      </h3>
+                    </div>
 
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech) => (
+                    <div className="bg-card p-6 rounded-lg border border-border">
+                      <p className="text-muted-foreground">{project.description}</p>
+                    </div>
+
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech) => (
+                        <a
+                          key={tech}
+                          href={techLinks[tech] || '#'}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-full hover:underline"
+                        >
+                          {tech}
+                        </a>
+                      ))}
+                    </div>
+
+                    <div className="flex space-x-4">
                       <a
-                        key={tech}
-                        href={techLinks[tech] || '#'}
+                        href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-full hover:underline"
+                        className="p-2 rounded-lg border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110"
                       >
-                        {tech}
+                        <Github size={20} />
                       </a>
-                    ))}
-                  </div>
 
-                  <div className="flex space-x-4">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 rounded-lg border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110"
-                    >
-                      <Github size={20} />
-                    </a>
-
-                   {project.live && (
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 rounded-lg border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110"
-                    >
-                      <ExternalLink size={20} />
-                    </a>
-                    )}
+                      {project.live && (
+                        <a
+                          href={project.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 rounded-lg border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110"
+                        >
+                          <ExternalLink size={20} />
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
