@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 
 type Detail = {
@@ -11,9 +10,9 @@ type Detail = {
 };
 
 const CarFinanceCalculator = () => {
-  const [valorCarro, setValorCarro] = useState(50000);
-  const [entrada, setEntrada] = useState(10000);
-  const [juros, setJuros] = useState(1.5);
+  const [valorCarro, setValorCarro] = useState(100000);
+  const [entrada, setEntrada] = useState(50000);
+  const [juros, setJuros] = useState(2.3);
   const [parcelas, setParcelas] = useState(36);
   const [resultado, setResultado] = useState('');
   const [detalhes, setDetalhes] = useState<Detail[]>([]);
@@ -60,45 +59,26 @@ const CarFinanceCalculator = () => {
       <h1 className="text-2xl font-bold mb-6 text-center">Calculadora de Financiamento de Carro</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-        <div>
-          <label className="block text-sm font-medium mb-1 text-muted-foreground">Valor do carro (R$):</label>
-          <input
-            type="number"
-            value={valorCarro}
-            onChange={(e) => setValorCarro(Number(e.target.value))}
-            className="w-full px-3 py-2 border border-border rounded-md bg-muted dark:bg-zinc-800"
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium mb-1 text-muted-foreground">Entrada (R$):</label>
-          <input
-            type="number"
-            value={entrada}
-            onChange={(e) => setEntrada(Number(e.target.value))}
-            className="w-full px-3 py-2 border border-border rounded-md bg-muted dark:bg-zinc-800"
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium mb-1 text-muted-foreground">Taxa de juros mensal (%):</label>
-          <input
-            type="number"
-            value={juros}
-            onChange={(e) => setJuros(Number(e.target.value))}
-            className="w-full px-3 py-2 border border-border rounded-md bg-muted dark:bg-zinc-800"
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium mb-1 text-muted-foreground">Prazo (meses):</label>
-          <input
-            type="number"
-            value={parcelas}
-            onChange={(e) => setParcelas(Number(e.target.value))}
-            className="w-full px-3 py-2 border border-border rounded-md bg-muted dark:bg-zinc-800"
-          />
-        </div>
+        <Input
+          label="Valor do carro (R$):"
+          value={valorCarro}
+          onChange={(e) => setValorCarro(Number(e.target.value))}
+        />
+        <Input
+          label="Entrada (R$):"
+          value={entrada}
+          onChange={(e) => setEntrada(Number(e.target.value))}
+        />
+        <Input
+          label="Taxa de juros mensal (%):"
+          value={juros}
+          onChange={(e) => setJuros(Number(e.target.value))}
+        />
+        <Input
+          label="Prazo (meses):"
+          value={parcelas}
+          onChange={(e) => setParcelas(Number(e.target.value))}
+        />
       </div>
 
       <button
@@ -119,23 +99,23 @@ const CarFinanceCalculator = () => {
           <table className="min-w-full table-auto border border-border text-sm">
             <thead className="bg-muted dark:bg-zinc-800">
               <tr>
-                <th className="px-4 py-2 border">Mês</th>
-                <th className="px-4 py-2 border">Saldo Inicial</th>
-                <th className="px-4 py-2 border">Parcela</th>
-                <th className="px-4 py-2 border">Juros</th>
-                <th className="px-4 py-2 border">Amortização</th>
-                <th className="px-4 py-2 border">Saldo Final</th>
+                <Th>Mês</Th>
+                <Th>Saldo Inicial</Th>
+                <Th>Parcela</Th>
+                <Th>Juros</Th>
+                <Th>Amortização</Th>
+                <Th>Saldo Final</Th>
               </tr>
             </thead>
             <tbody>
               {detalhes.map((linha) => (
                 <tr key={linha.mes} className="hover:bg-muted/50 dark:hover:bg-zinc-800/50 text-center">
-                  <td className="border px-4 py-2">{linha.mes}</td>
-                  <td className="border px-4 py-2">R$ {linha.saldoInicial}</td>
-                  <td className="border px-4 py-2">R$ {linha.parcela}</td>
-                  <td className="border px-4 py-2">R$ {linha.juros}</td>
-                  <td className="border px-4 py-2">R$ {linha.amortizacao}</td>
-                  <td className="border px-4 py-2">R$ {linha.saldoFinal}</td>
+                  <Td>{linha.mes}</Td>
+                  <Td>R$ {linha.saldoInicial}</Td>
+                  <Td>R$ {linha.parcela}</Td>
+                  <Td>R$ {linha.juros}</Td>
+                  <Td>R$ {linha.amortizacao}</Td>
+                  <Td>R$ {linha.saldoFinal}</Td>
                 </tr>
               ))}
             </tbody>
@@ -145,5 +125,32 @@ const CarFinanceCalculator = () => {
     </div>
   );
 };
+
+const Input = ({
+  label,
+  value,
+  onChange,
+}: {
+  label: string;
+  value: number;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}) => (
+  <div>
+    <label className="block text-sm font-medium mb-1 text-muted-foreground">{label}</label>
+    <input
+      type="number"
+      value={value}
+      onChange={onChange}
+      className="w-full px-3 py-2 border border-border rounded-md bg-muted dark:bg-zinc-800"
+    />
+  </div>
+);
+
+const Th = ({ children }: { children: React.ReactNode }) => (
+  <th className="px-4 py-2 border">{children}</th>
+);
+const Td = ({ children }: { children: React.ReactNode }) => (
+  <td className="border px-4 py-2">{children}</td>
+);
 
 export default CarFinanceCalculator;
