@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Header from '../components/Header.tsx';
 import FinancingCalculator from '../components/projects/FinancingCalculator.tsx';
 import Footer from '../components/Footer.tsx';
