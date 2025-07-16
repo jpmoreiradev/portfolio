@@ -190,7 +190,6 @@ const Projects: React.FC<ProjectsProps> = ({limit}) => {
   <div className="text-center">
     <a
       href="/projects"
-      target="_blank"
       rel="noopener noreferrer"
       className="text-center inline-flex items-center space-x-2 text-primary hover:text-secondary transition-colors duration-200 group"
     >

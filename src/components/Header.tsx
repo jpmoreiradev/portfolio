@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
+interface InterfaceHeader {
+      href: string;
+      label: string;
+      onClick?: () => void,
+}
+
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isBlogPage, setIsBlogPage] = useState(false);
-  const [isProjectsPage, setIsProjectsPage] = useState(false)
+  const [isProjectsPage, setIsProjectsPage] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,31 +22,56 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Detecta se está na página de blog
   useEffect(() => {
     const currentPath = window.location.pathname;
     setIsBlogPage(currentPath === '/blogs');
-    setIsProjectsPage(currentPath === '/projects/investment-calculator');
+    setIsProjectsPage(currentPath.startsWith('/projects'));
   }, []);
 
-  
-  const returnHeader = [{ href: '/', label: 'Voltar' }]
-  const homeHeader =  [
-        { href: '#', label: 'Sobre' },
-        { href: '#experiencia', label: 'Experiência' },
-        { href: '#projetos', label: 'Projetos' },
-        { href: '#contato', label: 'Contato' },
-        { href: '/blogs', label: 'Blogs' },
-      ]
- 
-  const navItems = isBlogPage || isProjectsPage
-    ? returnHeader
-    : homeHeader;
+  const returnHome = [{ href: '/', label: 'Voltar' }];
+
+  const returnProjects = [
+    {
+      href: '/',
+      label: 'Voltar',
+      onClick: () => sessionStorage.setItem('scrollTo', 'projetos'),
+    },
+  ];
+
+  const homeHeader = [
+    { href: '/#', label: 'Sobre' },
+    { href: '#experiencia', label: 'Experiência' },
+    { href: '#projetos', label: 'Projetos' },
+    { href: '#contato', label: 'Contato' },
+    { href: '/blogs', label: 'Blogs' },
+  ];
+
+  const navItems = isProjectsPage ? returnProjects : isBlogPage ? returnHome : homeHeader;
+
+  const handleNavClick = (e: React.MouseEvent, href: string, onClick?: () => void) => {
+    if (onClick) {
+      onClick();
+    }
+
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const section = document.querySelector(href);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+        window.history.pushState(null, '', href);
+      }
+      setIsMobileMenuOpen(false);
+    } else {
+      setIsMobileMenuOpen(false);
+    }
+  };
 
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-background/80 backdrop-blur-md border-b border-border' : 'bg-transparent'
+        isScrolled
+          ? 'bg-background/80 backdrop-blur-md border-b border-border'
+          : 'bg-transparent'
       }`}
     >
       <nav className="section-padding py-4">
@@ -52,12 +83,12 @@ const Header = () => {
             jpmoreiradev.com.br
           </a>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
+            {navItems.map((item: InterfaceHeader) => (
               <a
                 key={item.href}
                 href={item.href}
+                onClick={(e) => handleNavClick(e, item.href, item.onClick)}
                 className="text-muted-foreground hover:text-primary transition-colors duration-200 relative group"
               >
                 {item.label}
@@ -66,7 +97,6 @@ const Header = () => {
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden text-foreground hover:text-primary transition-colors duration-200"
@@ -75,15 +105,14 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 py-4 border-t border-border animate-fade-in">
             <div className="flex flex-col space-y-4">
-              {navItems.map((item) => (
+              {navItems.map((item: InterfaceHeader) => (
                 <a
                   key={item.href}
                   href={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={(e) => handleNavClick(e, item.href, item.onClick)}
                   className="text-muted-foreground hover:text-primary transition-colors duration-200"
                 >
                   {item.label}
