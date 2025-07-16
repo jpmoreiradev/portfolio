@@ -5,8 +5,14 @@ import uniStoreImg from '../assets/images/sessionProjects/unistore.png';
 import crudNestJsImg from '../assets/images/sessionProjects/crudnestjs.png';
 import investmentCalculatorImg from '../assets/images/sessionProjects/investmentcalculator.png';
 
-const Projects = () => {
-  const projects = [
+interface ProjectsProps {
+  limit?: number;
+}
+
+const Projects: React.FC<ProjectsProps> = ({limit}) => {
+
+
+  const allProjects = [
      {
       title: 'Calculadora de Investimento',
       description:
@@ -21,7 +27,7 @@ const Projects = () => {
       ],
       github:
         'https://github.com/jpmoreiradev/portfolio/blob/main/src/components/projects/InvestmentCalculator.tsx',
-      live: 'https://jpmoreiradev.com.br/projects/investment-calculator',
+      live: '/projects/investment-calculator',
     },
     {
       title: 'NestJS CRUD API',
@@ -59,6 +65,8 @@ const Projects = () => {
    
   ];
 
+  const projectsToRender = limit ? allProjects.slice(0, limit) : allProjects;
+
   const techLinks: Record<string, string> = {
     Prettier: 'https://prettier.io/',
     ESLint: 'https://eslint.org/',
@@ -90,7 +98,7 @@ const Projects = () => {
           </div>
 
           <div className="space-y-16">
-            {projects.map((project, index) => {
+            {projectsToRender.map((project, index) => {
               const hasLive = !!project.live;
 
               return (
@@ -100,7 +108,6 @@ const Projects = () => {
                     index % 2 === 1 ? 'md:grid-flow-col-dense' : ''
                   } ${hasLive ? 'border-2 border-green-500 shadow-lg rounded-lg' : ''}`}
                 >
-                  {/* Imagem */}
                   <div
                     className={`relative group ${
                       index % 2 === 1 ? 'md:col-start-2' : ''
@@ -179,11 +186,24 @@ const Projects = () => {
                 </div>
               );
             })}
+   {limit && (
+  <div className="text-center">
+    <a
+      href="/projects"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-center inline-flex items-center space-x-2 text-primary hover:text-secondary transition-colors duration-200 group"
+    >
+      <span>Ver todos os projetos</span>
+      <ExternalLink size={18} className="group-hover:translate-x-1 transition-transform duration-200" />
+    </a>
+  </div>
+)}
           </div>
         </div>
       </div>
     </section>
   );
 };
-
+ 
 export default Projects;

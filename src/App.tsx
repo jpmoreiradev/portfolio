@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import FinancingCalculatorPage from "./pages/FinancingCalculator";
 import InvestmentCalculatorPage from "./pages/InvestmentCalculator";
+import Projects from "./pages/Projects";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/blogs" element={<Blog />} />
+          <Route path="/projects" element={<Projects />} />
           <Route path="/projects/investment-calculator" element={<InvestmentCalculatorPage />} />
           <Route path="/projects/financing-calculator" element={<FinancingCalculatorPage />} />
           <Route path="*" element={<NotFound />} />
