@@ -1,115 +1,112 @@
-
 import React, { useState } from 'react';
 
 type Detail = {
   mes: number;
-  saldoInicial: string;
-  parcela: string;
-  juros: string;
-  amortizacao: string;
-  saldoFinal: string;
+  rendimentoBruto: string;
+  ir: string;
+  rendimentoLiquido: string;
+  aporte: string;
+  saldo: string;
 };
 
-const CarFinanceCalculator = () => {
-  const [valorCarro, setValorCarro] = useState(50000);
-  const [entrada, setEntrada] = useState(10000);
-  const [juros, setJuros] = useState(1.5);
-  const [parcelas, setParcelas] = useState(36);
+const InvestmentCalculator = () => {
+  const [capital, setCapital] = useState(1000);
+  const [aporte, setAporte] = useState(200);
+  const [taxa, setTaxa] = useState(1);
+  const [periodo, setPeriodo] = useState(12);
+  const [imposto, setImposto] = useState(22.5);
   const [resultado, setResultado] = useState('');
   const [detalhes, setDetalhes] = useState<Detail[]>([]);
 
-  const calcularFinanciamento = () => {
-    const valorFinanciado = valorCarro - entrada;
-    const taxa = juros / 100;
-    const n = parcelas;
+  const calcularInvestimento = () => {
+    let saldo = capital;
+    const detalhesTemp = [];
 
-    const parcela =
-      taxa > 0
-        ? (valorFinanciado * taxa) / (1 - Math.pow(1 + taxa, -n))
-        : valorFinanciado / n;
-
-    const detalhesTemp: Detail[] = [];
-    let saldoDevedor = valorFinanciado;
-
-    for (let mes = 1; mes <= n; mes++) {
-      const jurosMes = saldoDevedor * taxa;
-      const amortizacao = parcela - jurosMes;
-      const novoSaldo = saldoDevedor - amortizacao;
+    for (let mes = 1; mes <= periodo; mes++) {
+      const rendimentoBruto = saldo * (taxa / 100);
+      const ir = rendimentoBruto * (imposto / 100);
+      const rendimentoLiquido = rendimentoBruto - ir;
+      saldo += rendimentoLiquido + aporte;
 
       detalhesTemp.push({
         mes,
-        saldoInicial: saldoDevedor.toFixed(2),
-        parcela: parcela.toFixed(2),
-        juros: jurosMes.toFixed(2),
-        amortizacao: amortizacao.toFixed(2),
-        saldoFinal: novoSaldo.toFixed(2),
+        rendimentoBruto: rendimentoBruto.toFixed(2),
+        ir: ir.toFixed(2),
+        rendimentoLiquido: rendimentoLiquido.toFixed(2),
+        aporte: aporte.toFixed(2),
+        saldo: saldo.toFixed(2),
       });
-
-      saldoDevedor = novoSaldo;
     }
 
-    const totalPago = parcela * n;
-    const totalJuros = totalPago - valorFinanciado;
-
-    setResultado(`Total pago: R$ ${totalPago.toFixed(2)} | Total de juros: R$ ${totalJuros.toFixed(2)}`);
+    setResultado(`Saldo final: R$ ${saldo.toFixed(2)}`);
     setDetalhes(detalhesTemp);
   };
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-background text-foreground rounded-xl shadow-lg mt-10">
-      <h1 className="text-2xl font-bold mb-6 text-center">Calculadora de Financiamento de Carro</h1>
+      <h1 className="text-2xl font-bold mb-6 text-center">Calculadora de Investimento</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <div>
-          <label className="block text-sm font-medium mb-1 text-muted-foreground">Valor do carro (R$):</label>
+          <label className="block text-sm font-medium mb-1 text-muted-foreground">Capital Inicial (R$):</label>
           <input
             type="number"
-            value={valorCarro}
-            onChange={(e) => setValorCarro(Number(e.target.value))}
+            value={capital}
+            onChange={(e) => setCapital(Number(e.target.value))}
             className="w-full px-3 py-2 border border-border rounded-md bg-muted dark:bg-zinc-800"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1 text-muted-foreground">Entrada (R$):</label>
+          <label className="block text-sm font-medium mb-1 text-muted-foreground">Aporte Mensal (R$):</label>
           <input
             type="number"
-            value={entrada}
-            onChange={(e) => setEntrada(Number(e.target.value))}
+            value={aporte}
+            onChange={(e) => setAporte(Number(e.target.value))}
             className="w-full px-3 py-2 border border-border rounded-md bg-muted dark:bg-zinc-800"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1 text-muted-foreground">Taxa de juros mensal (%):</label>
+          <label className="block text-sm font-medium mb-1 text-muted-foreground">Taxa de Juros (% ao mês):</label>
           <input
             type="number"
-            value={juros}
-            onChange={(e) => setJuros(Number(e.target.value))}
+            value={taxa}
+            onChange={(e) => setTaxa(Number(e.target.value))}
             className="w-full px-3 py-2 border border-border rounded-md bg-muted dark:bg-zinc-800"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1 text-muted-foreground">Prazo (meses):</label>
+          <label className="block text-sm font-medium mb-1 text-muted-foreground">Período (meses):</label>
           <input
             type="number"
-            value={parcelas}
-            onChange={(e) => setParcelas(Number(e.target.value))}
+            value={periodo}
+            onChange={(e) => setPeriodo(Number(e.target.value))}
+            className="w-full px-3 py-2 border border-border rounded-md bg-muted dark:bg-zinc-800"
+          />
+        </div>
+
+        <div className="md:col-span-2">
+          <label className="block text-sm font-medium mb-1 text-muted-foreground">Imposto (% sobre rendimento):</label>
+          <input
+            type="number"
+            value={imposto}
+            onChange={(e) => setImposto(Number(e.target.value))}
             className="w-full px-3 py-2 border border-border rounded-md bg-muted dark:bg-zinc-800"
           />
         </div>
       </div>
 
       <button
-        onClick={calcularFinanciamento}
+        onClick={calcularInvestimento}
         className="w-full bg-primary text-white font-semibold py-2 px-4 rounded-md hover:bg-primary/90 transition"
       >
         Calcular
       </button>
 
       {resultado && (
-        <h2 className="mt-6 text-xl font-bold text-center text-blue-600 dark:text-blue-400">
+        <h2 className="mt-6 text-xl font-bold text-center text-green-600 dark:text-green-400">
           {resultado}
         </h2>
       )}
@@ -120,22 +117,22 @@ const CarFinanceCalculator = () => {
             <thead className="bg-muted dark:bg-zinc-800">
               <tr>
                 <th className="px-4 py-2 border">Mês</th>
-                <th className="px-4 py-2 border">Saldo Inicial</th>
-                <th className="px-4 py-2 border">Parcela</th>
-                <th className="px-4 py-2 border">Juros</th>
-                <th className="px-4 py-2 border">Amortização</th>
-                <th className="px-4 py-2 border">Saldo Final</th>
+                <th className="px-4 py-2 border">Rendimento Bruto</th>
+                <th className="px-4 py-2 border">IR</th>
+                <th className="px-4 py-2 border">Rendimento Líquido</th>
+                <th className="px-4 py-2 border">Aporte</th>
+                <th className="px-4 py-2 border">Saldo</th>
               </tr>
             </thead>
             <tbody>
               {detalhes.map((linha) => (
                 <tr key={linha.mes} className="hover:bg-muted/50 dark:hover:bg-zinc-800/50 text-center">
                   <td className="border px-4 py-2">{linha.mes}</td>
-                  <td className="border px-4 py-2">R$ {linha.saldoInicial}</td>
-                  <td className="border px-4 py-2">R$ {linha.parcela}</td>
-                  <td className="border px-4 py-2">R$ {linha.juros}</td>
-                  <td className="border px-4 py-2">R$ {linha.amortizacao}</td>
-                  <td className="border px-4 py-2">R$ {linha.saldoFinal}</td>
+                  <td className="border px-4 py-2">R$ {linha.rendimentoBruto}</td>
+                  <td className="border px-4 py-2">R$ {linha.ir}</td>
+                  <td className="border px-4 py-2">R$ {linha.rendimentoLiquido}</td>
+                  <td className="border px-4 py-2">R$ {linha.aporte}</td>
+                  <td className="border px-4 py-2">R$ {linha.saldo}</td>
                 </tr>
               ))}
             </tbody>
@@ -146,4 +143,4 @@ const CarFinanceCalculator = () => {
   );
 };
 
-export default CarFinanceCalculator;
+export default InvestmentCalculator;
