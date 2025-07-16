@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
 interface InterfaceHeader {
-      href: string;
-      label: string;
-      onClick?: () => void,
+  href: string;
+  label: string;
+  onClick?: () => void;
 }
 
 const Header = () => {
@@ -46,9 +46,17 @@ const Header = () => {
     { href: '/blogs', label: 'Blogs' },
   ];
 
-  const navItems = isProjectsPage ? returnProjects : isBlogPage ? returnHome : homeHeader;
+  const navItems = isProjectsPage
+    ? returnProjects
+    : isBlogPage
+      ? returnHome
+      : homeHeader;
 
-  const handleNavClick = (e: React.MouseEvent, href: string, onClick?: () => void) => {
+  const handleNavClick = (
+    e: React.MouseEvent,
+    href: string,
+    onClick?: () => void,
+  ) => {
     if (onClick) {
       onClick();
     }

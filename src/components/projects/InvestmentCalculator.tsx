@@ -44,11 +44,15 @@ const InvestmentCalculator = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-background text-foreground rounded-xl shadow-lg mt-10">
-      <h1 className="text-2xl font-bold mb-6 text-center">Calculadora de Investimento</h1>
+      <h1 className="text-2xl font-bold mb-6 text-center">
+        Calculadora de Investimento
+      </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <div>
-          <label className="block text-sm font-medium mb-1 text-muted-foreground">Capital Inicial (R$):</label>
+          <label className="block text-sm font-medium mb-1 text-muted-foreground">
+            Capital Inicial (R$):
+          </label>
           <input
             type="number"
             value={capital}
@@ -58,7 +62,13 @@ const InvestmentCalculator = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1 text-muted-foreground">Aporte Mensal (R$):</label>
+          <label
+            htmlFor="aporte_mensal"
+            className="block text-sm font-medium mb-1 text-muted-foreground"
+          >
+            {' '}
+            Aporte Mensal (R$):
+          </label>
           <input
             type="number"
             value={aporte}
@@ -68,7 +78,9 @@ const InvestmentCalculator = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1 text-muted-foreground">Taxa de Juros (% ao mês):</label>
+          <label className="block text-sm font-medium mb-1 text-muted-foreground">
+            Taxa de Juros (% ao mês):
+          </label>
           <input
             type="number"
             value={taxa}
@@ -78,7 +90,9 @@ const InvestmentCalculator = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1 text-muted-foreground">Período (meses):</label>
+          <label className="block text-sm font-medium mb-1 text-muted-foreground">
+            Período (meses):
+          </label>
           <input
             type="number"
             value={periodo}
@@ -88,7 +102,9 @@ const InvestmentCalculator = () => {
         </div>
 
         <div className="md:col-span-2">
-          <label className="block text-sm font-medium mb-1 text-muted-foreground">Imposto (% sobre rendimento):</label>
+          <label className="block text-sm font-medium mb-1 text-muted-foreground">
+            Imposto (% sobre rendimento):
+          </label>
           <input
             type="number"
             value={imposto}
@@ -126,11 +142,18 @@ const InvestmentCalculator = () => {
             </thead>
             <tbody>
               {detalhes.map((linha) => (
-                <tr key={linha.mes} className="hover:bg-muted/50 dark:hover:bg-zinc-800/50 text-center">
+                <tr
+                  key={linha.mes}
+                  className="hover:bg-muted/50 dark:hover:bg-zinc-800/50 text-center"
+                >
                   <td className="border px-4 py-2">{linha.mes}</td>
-                  <td className="border px-4 py-2">R$ {linha.rendimentoBruto}</td>
+                  <td className="border px-4 py-2">
+                    R$ {linha.rendimentoBruto}
+                  </td>
                   <td className="border px-4 py-2">R$ {linha.ir}</td>
-                  <td className="border px-4 py-2">R$ {linha.rendimentoLiquido}</td>
+                  <td className="border px-4 py-2">
+                    R$ {linha.rendimentoLiquido}
+                  </td>
                   <td className="border px-4 py-2">R$ {linha.aporte}</td>
                   <td className="border px-4 py-2">R$ {linha.saldo}</td>
                 </tr>

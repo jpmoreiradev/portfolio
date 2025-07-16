@@ -50,13 +50,17 @@ const CarFinanceCalculator = () => {
     const totalPago = parcela * n;
     const totalJuros = totalPago - valorFinanciado;
 
-    setResultado(`Total pago: R$ ${totalPago.toFixed(2)} | Total de juros: R$ ${totalJuros.toFixed(2)}`);
+    setResultado(
+      `Total pago: R$ ${totalPago.toFixed(2)} | Total de juros: R$ ${totalJuros.toFixed(2)}`,
+    );
     setDetalhes(detalhesTemp);
   };
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-background text-foreground rounded-xl shadow-lg mt-10">
-      <h1 className="text-2xl font-bold mb-6 text-center">Calculadora de Financiamento de Carro</h1>
+      <h1 className="text-2xl font-bold mb-6 text-center">
+        Calculadora de Financiamento de Carro
+      </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <Input
@@ -109,7 +113,10 @@ const CarFinanceCalculator = () => {
             </thead>
             <tbody>
               {detalhes.map((linha) => (
-                <tr key={linha.mes} className="hover:bg-muted/50 dark:hover:bg-zinc-800/50 text-center">
+                <tr
+                  key={linha.mes}
+                  className="hover:bg-muted/50 dark:hover:bg-zinc-800/50 text-center"
+                >
                   <Td>{linha.mes}</Td>
                   <Td>R$ {linha.saldoInicial}</Td>
                   <Td>R$ {linha.parcela}</Td>
@@ -136,7 +143,9 @@ const Input = ({
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) => (
   <div>
-    <label className="block text-sm font-medium mb-1 text-muted-foreground">{label}</label>
+    <label className="block text-sm font-medium mb-1 text-muted-foreground">
+      {label}
+    </label>
     <input
       type="number"
       value={value}

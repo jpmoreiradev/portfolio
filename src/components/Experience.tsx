@@ -1,11 +1,10 @@
-
 import React, { useState } from 'react';
 import { ExternalLink } from 'lucide-react';
 
 const Experience = () => {
   const [activeTab, setActiveTab] = useState(0);
-  
-  const experiences =  [
+
+  const experiences = [
     {
       title: 'Moreira Especialidades',
       company: 'Moreira Especialidades 2024',
@@ -19,35 +18,35 @@ const Experience = () => {
       ],
       link: 'https://www.instagram.com/moreiraespecialidades/',
     },
-  {
-    title: 'Esportudo Company',
-    company: 'Esportudo Company 2023',
-    position: 'Backend Engineer',
-    period: 'Abril 2023 - Outubro 2023',
-    description: [
-      'Foco principal em desenvolvimento Backend com Node.js, JavaScript e TypeScript',
-      'Construção de endpoints otimizados utilizando Express',
-      'Gerenciamento eficiente de bancos de dados SQL',
-      'Criação de testes automatizados com Jest e Mocha',
-      'Garantia de eficiência e escalabilidade nas aplicações desenvolvidas',
-      'Uso de contêineres Docker para facilitar a compatibilidade e distribuição de aplicações',
-    ],
-    link: 'https://www.esportudo.com/',
-  },
-  {
-    title: 'Esportudo Company',
-    company: 'Esportudo Company 2022',
-    position: 'Developer Intern',
-    period: 'Janeiro 2022 - Abril 2023',
-    description: [
-      'Atuação no desenvolvimento de software com foco em APIs',
-      'Utilização de Node.js, JavaScript e TypeScript na criação de serviços',
-      'Proficiente na modelagem e manipulação de dados com SQL',
-      'Aprimoramento de habilidades com Express na construção de endpoints RESTful',
-    ],
-    link: 'https://www.esportudo.com/',
-  },
-];
+    {
+      title: 'Esportudo Company',
+      company: 'Esportudo Company 2023',
+      position: 'Backend Engineer',
+      period: 'Abril 2023 - Outubro 2023',
+      description: [
+        'Foco principal em desenvolvimento Backend com Node.js, JavaScript e TypeScript',
+        'Construção de endpoints otimizados utilizando Express',
+        'Gerenciamento eficiente de bancos de dados SQL',
+        'Criação de testes automatizados com Jest e Mocha',
+        'Garantia de eficiência e escalabilidade nas aplicações desenvolvidas',
+        'Uso de contêineres Docker para facilitar a compatibilidade e distribuição de aplicações',
+      ],
+      link: 'https://www.esportudo.com/',
+    },
+    {
+      title: 'Esportudo Company',
+      company: 'Esportudo Company 2022',
+      position: 'Developer Intern',
+      period: 'Janeiro 2022 - Abril 2023',
+      description: [
+        'Atuação no desenvolvimento de software com foco em APIs',
+        'Utilização de Node.js, JavaScript e TypeScript na criação de serviços',
+        'Proficiente na modelagem e manipulação de dados com SQL',
+        'Aprimoramento de habilidades com Express na construção de endpoints RESTful',
+      ],
+      link: 'https://www.esportudo.com/',
+    },
+  ];
 
   return (
     <section id="experiencia" className="py-20 section-padding bg-muted/30">

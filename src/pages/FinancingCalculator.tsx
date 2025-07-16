@@ -1,7 +1,7 @@
 import React from 'react';
+
 import Header from '../components/Header.tsx';
 import FinancingCalculator from '../components/projects/FinancingCalculator.tsx';
-
 import Footer from '../components/Footer.tsx';
 
 const FinancingCalculatorPage = () => {
@@ -9,7 +9,7 @@ const FinancingCalculatorPage = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <main>
-         <FinancingCalculator /> 
+        <FinancingCalculator />
       </main>
       <Footer />
     </div>

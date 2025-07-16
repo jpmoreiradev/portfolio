@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Github, Linkedin, Mail, Heart } from 'lucide-react';
 
@@ -31,7 +30,7 @@ const Footer = () => {
               <Mail size={20} />
             </a>
           </div>
-          
+
           <div className="space-y-2">
             <p className="text-muted-foreground flex items-center justify-center space-x-2">
               <span>Construído com</span>

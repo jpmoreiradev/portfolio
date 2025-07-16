@@ -1,7 +1,6 @@
 import React from 'react';
-import { Github, Linkedin, Mail, MessageCircle, ArrowDown } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowDown } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
-
 
 const Hero = () => {
   return (
@@ -21,9 +20,13 @@ const Hero = () => {
         </div>
 
         <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-          Sou um desenvolvedor com foco em <span className="text-primary font-medium">Back-end</span>, mas com experiência em diversas áreas da tecnologia. Me interesso por projetos de diversas áreas, sempre aberto a novos desafios. Busco criar soluções escaláveis, bem estruturadas e com foco em qualidade e eficiência.
+          Sou um desenvolvedor com foco em{' '}
+          <span className="text-primary font-medium">Back-end</span>, mas com
+          experiência em diversas áreas da tecnologia. Me interesso por projetos
+          de diversas áreas, sempre aberto a novos desafios. Busco criar
+          soluções escaláveis, bem estruturadas e com foco em qualidade e
+          eficiência.
         </p>
-
 
         <div className="flex justify-center space-x-6">
           <a
@@ -48,10 +51,11 @@ const Hero = () => {
           >
             <Mail size={24} />
           </a>
-           <a
+          <a
             href="https://wa.me/5588997307495?text=Olá%2C%20gostaria%20de%20falar%20com%20você%20sobre%20o%20seu%20portfólio!"
-             target="_blank"
+            target="_blank"
             className="p-3 rounded-lg border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110"
+            rel="noreferrer"
           >
             <FaWhatsapp className="text-green-500 w-6 h-6" />
           </a>

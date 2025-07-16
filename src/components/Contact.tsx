@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
-import emailjs from '@emailjs/browser';
+import { sendForm } from '@emailjs/browser';
 
 const Contact = () => {
   const form = useRef();
@@ -13,22 +13,22 @@ const Contact = () => {
     setLoading(true);
     setError(null);
 
-       emailjs.sendForm(
-      'service_keu4u8j', // substitua pelo seu Service ID
-      'template_67waoir', // substitua pelo seu Template ID
+    sendForm(
+      'service_keu4u8j',
+      'template_67waoir',
       form.current,
-      'mRTpGKM0niZlV0vPo' // substitua pela sua Public Key
+      'mRTpGKM0niZlV0vPo',
     )
-    .then(() => {
-      setLoading(false);
-      setMessageSent(true);
-      e.target.reset();
-    })
-    .catch((err) => {
-      setLoading(false);
-      setError('Erro ao enviar mensagem. Por favor, tente novamente.');
-      console.error(err);
-    });
+      .then(() => {
+        setLoading(false);
+        setMessageSent(true);
+        e.target.reset();
+      })
+      .catch((err) => {
+        setLoading(false);
+        setError('Erro ao enviar mensagem. Por favor, tente novamente.');
+        console.error(err);
+      });
   };
 
   return (
@@ -41,13 +41,13 @@ const Contact = () => {
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Estou sempre interessado em novas oportunidades e projetos interessantes. 
-              Se você tem uma pergunta ou apenas quer dizer oi, ficarei feliz em responder!
+              Estou sempre interessado em novas oportunidades e projetos
+              interessantes. Se você tem uma pergunta ou apenas quer dizer oi,
+              ficarei feliz em responder!
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12">
-            {/* Contact Info */}
             <div className="space-y-8 animate-fade-in">
               <div>
                 <h3 className="text-xl font-semibold text-foreground mb-6">
@@ -60,20 +60,24 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="text-foreground font-medium">Email</p>
-                      <p className="text-muted-foreground">jp02120123@gmail.com</p>
+                      <p className="text-muted-foreground">
+                        jp02120123@gmail.com
+                      </p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center space-x-4">
                     <div className="p-3 rounded-lg bg-primary/10 text-primary">
                       <Phone size={20} />
                     </div>
                     <div>
                       <p className="text-foreground font-medium">Telefone</p>
-                      <p className="text-muted-foreground">+55 (88) 9 9730-7495</p>
+                      <p className="text-muted-foreground">
+                        +55 (88) 9 9730-7495
+                      </p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center space-x-4">
                     <div className="p-3 rounded-lg bg-primary/10 text-primary">
                       <MapPin size={20} />
@@ -92,7 +96,10 @@ const Contact = () => {
               <form ref={form} onSubmit={sendEmail} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="user_name" className="block text-sm font-medium text-foreground mb-2">
+                    <label
+                      htmlFor="user_name"
+                      className="block text-sm font-medium text-foreground mb-2"
+                    >
                       Nome
                     </label>
                     <input
@@ -105,7 +112,10 @@ const Contact = () => {
                     />
                   </div>
                   <div>
-                    <label htmlFor="user_email" className="block text-sm font-medium text-foreground mb-2">
+                    <label
+                      htmlFor="user_email"
+                      className="block text-sm font-medium text-foreground mb-2"
+                    >
                       Email
                     </label>
                     <input
@@ -118,9 +128,12 @@ const Contact = () => {
                     />
                   </div>
                 </div>
-                
+
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
+                  <label
+                    htmlFor="subject"
+                    className="block text-sm font-medium text-foreground mb-2"
+                  >
                     Assunto
                   </label>
                   <input
@@ -132,9 +145,12 @@ const Contact = () => {
                     required
                   />
                 </div>
-                
+
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-foreground mb-2"
+                  >
                     Mensagem
                   </label>
                   <textarea
@@ -146,7 +162,7 @@ const Contact = () => {
                     required
                   ></textarea>
                 </div>
-                
+
                 <button
                   type="submit"
                   disabled={loading}
@@ -156,11 +172,11 @@ const Contact = () => {
                   <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
                 </button>
                 {messageSent && (
-                  <p className="text-green-500 mt-4">Mensagem enviada com sucesso!</p>
+                  <p className="text-green-500 mt-4">
+                    Mensagem enviada com sucesso!
+                  </p>
                 )}
-                {error && (
-                  <p className="text-red-500 mt-4">{error}</p>
-                )}
+                {error && <p className="text-red-500 mt-4">{error}</p>}
               </form>
             </div>
           </div>
@@ -171,5 +187,3 @@ const Contact = () => {
 };
 
 export default Contact;
-
-

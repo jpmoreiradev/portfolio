@@ -1,39 +1,40 @@
-import { useEffect } from 'react';
-import Header from '@/components/Header'; // ou ajuste o caminho se for diferente
-import Hero from '@/components/Hero'; // seção principal
-import About from '@/components/About';
-import Experience from '@/components/Experience';
-import Projects from '@/components/Projects';
-import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
+import { Toaster } from '@/components/ui/toaster';
+import { Toaster as Sonner } from '@/components/ui/sonner';
+import { TooltipProvider } from '@/components/ui/tooltip';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Blog from './pages/Blog';
+import IndexPage from './pages/Index';
+import NotFound from './pages/NotFound';
+import FinancingCalculatorPage from './pages/FinancingCalculator';
+import InvestmentCalculatorPage from './pages/InvestmentCalculator';
+import ProjectsPage from './pages/Projects';
 
-const Index = () => {
-  useEffect(() => {
-    const sectionId = sessionStorage.getItem('scrollTo');
-    if (sectionId) {
-      const el = document.getElementById(sectionId);
-      if (el) {
-        setTimeout(() => {
-          el.scrollIntoView({ behavior: 'smooth' });
-        }, 100); 
-      }
-      sessionStorage.removeItem('scrollTo');
-    }
-  }, []);
+const queryClient = new QueryClient();
 
-  return (
-    <>
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <Experience />
-        <Projects limit={3} />
-        <Contact />
-      </main>
-      <Footer />
-    </>
-  );
-};
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<IndexPage />} />
+          <Route path="/blogs" element={<Blog />} />
+          <Route
+            path="/projects/investment-calculator"
+            element={<InvestmentCalculatorPage />}
+          />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route
+            path="/projects/financing-calculator"
+            element={<FinancingCalculatorPage />}
+          />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
+);
 
-export default Index;
+export default App;

@@ -9,22 +9,14 @@ interface ProjectsProps {
   limit?: number;
 }
 
-const Projects: React.FC<ProjectsProps> = ({limit}) => {
-
-
+const Projects: React.FC<ProjectsProps> = ({ limit }) => {
   const allProjects = [
-     {
+    {
       title: 'Calculadora de Investimento',
       description:
         'Uma calculadora interativa que simula investimentos com aportes mensais, taxa de juros composta e desconto de imposto de renda. Desenvolvida com React e Tailwind CSS.',
       image: investmentCalculatorImg,
-      technologies: [
-        'React',
-        'TypeScript',
-        'TailwindCSS',
-        'Hooks',
-        'Vite',
-      ],
+      technologies: ['React', 'TypeScript', 'TailwindCSS', 'Hooks', 'Vite'],
       github:
         'https://github.com/jpmoreiradev/portfolio/blob/main/src/components/projects/InvestmentCalculator.tsx',
       live: '/projects/investment-calculator',
@@ -62,7 +54,6 @@ const Projects: React.FC<ProjectsProps> = ({limit}) => {
       github: 'https://github.com/jpmoreiradev/unistore',
       // live: '',
     },
-   
   ];
 
   const projectsToRender = limit ? allProjects.slice(0, limit) : allProjects;
@@ -80,10 +71,10 @@ const Projects: React.FC<ProjectsProps> = ({limit}) => {
     Express: 'https://expressjs.com/',
     Jsonwebtoken: 'https://github.com/auth0/node-jsonwebtoken',
     Sequelize: 'https://sequelize.org/',
-    React: "https://react.dev/",
-    TailwindCSS: "https://tailwindcss.com/",
-    Hooks: "https://react.dev/reference/react/hooks",
-    Vite: "https://vite.dev/"
+    React: 'https://react.dev/',
+    TailwindCSS: 'https://tailwindcss.com/',
+    Hooks: 'https://react.dev/reference/react/hooks',
+    Vite: 'https://vite.dev/',
   };
 
   return (
@@ -144,7 +135,9 @@ const Projects: React.FC<ProjectsProps> = ({limit}) => {
                     </div>
 
                     <div className="bg-card p-6 rounded-lg border border-border">
-                      <p className="text-muted-foreground">{project.description}</p>
+                      <p className="text-muted-foreground">
+                        {project.description}
+                      </p>
                     </div>
 
                     <div className="flex flex-wrap gap-2">
@@ -186,23 +179,26 @@ const Projects: React.FC<ProjectsProps> = ({limit}) => {
                 </div>
               );
             })}
-   {limit && (
-  <div className="text-center">
-    <a
-      href="/projects"
-      rel="noopener noreferrer"
-      className="text-center inline-flex items-center space-x-2 text-primary hover:text-secondary transition-colors duration-200 group"
-    >
-      <span>Ver todos os projetos</span>
-      <ExternalLink size={18} className="group-hover:translate-x-1 transition-transform duration-200" />
-    </a>
-  </div>
-)}
+            {limit && (
+              <div className="text-center">
+                <a
+                  href="/projects"
+                  rel="noopener noreferrer"
+                  className="text-center inline-flex items-center space-x-2 text-primary hover:text-secondary transition-colors duration-200 group"
+                >
+                  <span>Ver todos os projetos</span>
+                  <ExternalLink
+                    size={18}
+                    className="group-hover:translate-x-1 transition-transform duration-200"
+                  />
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </div>
     </section>
   );
 };
- 
+
 export default Projects;

@@ -1,4 +1,3 @@
-import React from 'react';
 import Header from '../components/Header';
 import Projects from '../components/Projects';
 import Footer from '../components/Footer';
@@ -8,7 +7,7 @@ const ProjectsPage = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <main>
-         <Projects />     
+        <Projects />
       </main>
       <Footer />
     </div>
