@@ -1,4 +1,3 @@
-import React from 'react';
 import { Github, ExternalLink } from 'lucide-react';
 
 import uniStoreImg from '../assets/images/sessionProjects/unistore.png';
@@ -9,7 +8,7 @@ interface ProjectsProps {
   limit?: number;
 }
 
-const Projects: React.FC<ProjectsProps> = ({ limit }) => {
+const Projects: React.FC<ProjectsProps> = ({ limit }: { limit: number }) => {
   const allProjects = [
     {
       title: 'Calculadora de Investimento',

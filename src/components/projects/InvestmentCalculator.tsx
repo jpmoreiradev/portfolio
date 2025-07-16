@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 type Detail = {
   mes: number;
@@ -50,7 +50,10 @@ const InvestmentCalculator = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <div>
-          <label className="block text-sm font-medium mb-1 text-muted-foreground">
+          <label
+            htmlFor="capital_inicial"
+            className="block text-sm font-medium mb-1 text-muted-foreground"
+          >
             Capital Inicial (R$):
           </label>
           <input
@@ -78,7 +81,10 @@ const InvestmentCalculator = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1 text-muted-foreground">
+          <label
+            htmlFor="taxa_juros"
+            className="block text-sm font-medium mb-1 text-muted-foreground"
+          >
             Taxa de Juros (% ao mês):
           </label>
           <input
@@ -90,7 +96,10 @@ const InvestmentCalculator = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium mb-1 text-muted-foreground">
+          <label
+            htmlFor="periodo"
+            className="block text-sm font-medium mb-1 text-muted-foreground"
+          >
             Período (meses):
           </label>
           <input
@@ -102,7 +111,10 @@ const InvestmentCalculator = () => {
         </div>
 
         <div className="md:col-span-2">
-          <label className="block text-sm font-medium mb-1 text-muted-foreground">
+          <label
+            htmlFor="imposto"
+            className="block text-sm font-medium mb-1 text-muted-foreground"
+          >
             Imposto (% sobre rendimento):
           </label>
           <input

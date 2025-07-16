@@ -1,4 +1,3 @@
-import React from 'react';
 import { Github, Linkedin, Mail, ArrowDown } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 

@@ -32,6 +32,7 @@ module.exports = {
     // Exemplo de regras extras que você pode querer:
     'react/react-in-jsx-scope': 'off', // Next.js não precisa importar React
     '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+    'react/prop-types': 'off',
   },
   settings: {
     react: {

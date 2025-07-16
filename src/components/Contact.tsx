@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { sendForm } from '@emailjs/browser';
 
