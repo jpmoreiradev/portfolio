@@ -3,6 +3,7 @@ import { Github, ExternalLink } from 'lucide-react';
 import uniStoreImg from '../assets/images/sessionProjects/unistore.png';
 import crudNestJsImg from '../assets/images/sessionProjects/crudnestjs.png';
 import investmentCalculatorImg from '../assets/images/sessionProjects/investmentcalculator.png';
+import financingCalculatorImg from '../assets/images/sessionProjects/financingcalculator.png';
 
 interface ProjectsProps {
   limit?: number;
@@ -13,12 +14,22 @@ const Projects: React.FC<ProjectsProps> = ({ limit }: { limit: number }) => {
     {
       title: 'Calculadora de Investimento',
       description:
-        'Uma calculadora interativa que simula investimentos com aportes mensais, taxa de juros composta e desconto de imposto de renda. Desenvolvida com React e Tailwind CSS.',
+        'Uma calculadora interativa que simula investimentos com aportes mensais, taxa de juros composta e desconto de imposto de renda. Desenvolvida com React.',
       image: investmentCalculatorImg,
       technologies: ['React', 'TypeScript', 'TailwindCSS', 'Hooks', 'Vite'],
       github:
         'https://github.com/jpmoreiradev/portfolio/blob/main/src/components/projects/InvestmentCalculator.tsx',
       live: '/projects/investment-calculator',
+    },
+    {
+      title: 'Calculadora de Financiamento',
+      description:
+        'Uma calculadora interativa que simula financiamentos com base em valor total, entrada, taxa de juros e prazo. Exibe parcelas mensais, total pago, juros e tabela de amortização. Desenvolvida com React',
+      image: financingCalculatorImg,
+      technologies: ['React', 'TypeScript', 'TailwindCSS', 'Hooks', 'Vite'],
+      github:
+        'https://github.com/jpmoreiradev/portfolio/blob/main/src/components/projects/InvestmentCalculator.tsx',
+      live: '/projects/financing-calculator',
     },
     {
       title: 'NestJS CRUD API',
@@ -125,10 +136,10 @@ const Projects: React.FC<ProjectsProps> = ({ limit }: { limit: number }) => {
                     }`}
                   >
                     <div>
-                      <p className="text-primary text-sm font-medium">
+                      {/* <p className="text-center  text-primary text-sm font-medium">
                         Projeto em Destaque
-                      </p>
-                      <h3 className="text-2xl font-bold text-foreground">
+                      </p> */}
+                      <h3 className="text-center text-2xl font-bold text-foreground">
                         {project.title}
                       </h3>
                     </div>
