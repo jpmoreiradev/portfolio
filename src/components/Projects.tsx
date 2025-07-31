@@ -166,7 +166,6 @@ const Projects: React.FC<ProjectsProps> = ({ limit }: { limit: number }) => {
                       {project.live && (
                         <a
                           href={project.live}
-                          target="_blank"
                           rel="noopener noreferrer"
                           className="p-2 rounded-lg border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110"
                         >
