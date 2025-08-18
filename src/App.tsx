@@ -9,6 +9,7 @@ import NotFound from './pages/NotFound';
 import FinancingCalculatorPage from './pages/FinancingCalculator';
 import InvestmentCalculatorPage from './pages/InvestmentCalculator';
 import ProjectsPage from './pages/Projects';
+import SnakeGame from './components/projects/SnakeGame';
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => (
             path="/projects/financing-calculator"
             element={<FinancingCalculatorPage />}
           />
+          <Route path="/projects/snake-game" element={<SnakeGame />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
