@@ -9,9 +9,15 @@ const SnakeGame: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const tileSize = 20;
-  const canvasSize = { width: 1200, height: 720 };
+  const canvasSize = { width: 800, height: 600 };
 
-  const [snake, setSnake] = useState<Position[]>([{ x: 8, y: 8 }]);
+  const initialSnake: Position[] = [
+    { x: 8, y: 8 },
+    { x: 7, y: 8 },
+    { x: 6, y: 8 },
+  ];
+
+  const [snake, setSnake] = useState<Position[]>(initialSnake);
   const [direction, setDirection] = useState<Position>({ x: 1, y: 0 });
   const [nextDirection, setNextDirection] = useState<Position>({ x: 1, y: 0 });
   const [food, setFood] = useState<Position>({ x: 10, y: 10 });
@@ -19,10 +25,11 @@ const SnakeGame: React.FC = () => {
   const [score, setScore] = useState(0);
   const [paused, setPaused] = useState(false);
   const [gameOver, setGameOver] = useState(false);
+  const [speed, setSpeed] = useState(120); // velocidade inicial em ms
 
   // Gerar comida
   const spawnFood = (snakeBody: Position[]) => {
-    let newFood;
+    let newFood: Position;
     do {
       newFood = {
         x: Math.floor(Math.random() * (canvasSize.width / tileSize)),
@@ -38,7 +45,6 @@ const SnakeGame: React.FC = () => {
   useEffect(() => {
     let animationFrame: number;
     let lastUpdate = performance.now();
-    const speed = 80; // ms por movimento
 
     const loop = (time: number) => {
       animationFrame = requestAnimationFrame(loop);
@@ -54,16 +60,13 @@ const SnakeGame: React.FC = () => {
             y: prev[0].y + nextDirection.y,
           };
 
-          // Colisão com parede
-          if (
-            head.x < 0 ||
-            head.y < 0 ||
-            head.x >= canvasSize.width / tileSize ||
-            head.y >= canvasSize.height / tileSize
-          ) {
-            setGameOver(true);
-            return prev;
-          }
+          // Wrap-around
+          head.x =
+            (head.x + canvasSize.width / tileSize) %
+            (canvasSize.width / tileSize);
+          head.y =
+            (head.y + canvasSize.height / tileSize) %
+            (canvasSize.height / tileSize);
 
           // Colisão consigo mesma
           if (prev.some((seg) => seg.x === head.x && seg.y === head.y)) {
@@ -77,6 +80,14 @@ const SnakeGame: React.FC = () => {
           if (head.x === food.x && head.y === food.y) {
             setScore((s) => s + 1);
             spawnFood(newSnake);
+
+            // Cresce 2 blocos
+            const tail = newSnake[newSnake.length - 1];
+            newSnake.push({ ...tail });
+            newSnake.push({ ...tail });
+
+            // Aumenta velocidade (diminuir tempo entre frames)
+            setSpeed((prevSpeed) => Math.max(30, prevSpeed - 5)); // mínimo 30ms
           } else {
             newSnake.pop();
           }
@@ -88,7 +99,7 @@ const SnakeGame: React.FC = () => {
 
     animationFrame = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(animationFrame);
-  }, [paused, nextDirection, gameOver, food]);
+  }, [paused, nextDirection, gameOver, food, speed]);
 
   // Input
   useEffect(() => {
@@ -113,7 +124,7 @@ const SnakeGame: React.FC = () => {
           newDir = { x: 1, y: 0 };
           break;
         case ' ':
-          if (!gameOver) setPaused((p) => !p); // Pausa só se não tiver Game Over
+          if (!gameOver) setPaused((p) => !p);
           break;
         case 'enter':
           if (gameOver) resetGame();
@@ -174,13 +185,14 @@ const SnakeGame: React.FC = () => {
   }, [snake, food, paused, gameOver]);
 
   const resetGame = () => {
-    setSnake([{ x: 8, y: 8 }]);
+    setSnake(initialSnake);
     setDirection({ x: 1, y: 0 });
     setNextDirection({ x: 1, y: 0 });
     setFood({ x: 10, y: 10 });
     setScore(0);
     setGameOver(false);
     setPaused(false);
+    setSpeed(120); // reset velocidade
   };
 
   return (
@@ -194,13 +206,10 @@ const SnakeGame: React.FC = () => {
         className="border-2 border-gray-500 rounded bg-black"
       />
 
-      {/* Controles em linha */}
+      {/* Controles */}
       <div className="mt-2 text-white text-center">
-        <span className="mr-4">
-          {' '}
-          ⬆️ ⬇️ ⬅️ ➡️ / W A S D {'=>'} mover a cobra
-        </span>
-        <span className="mr-4">Espaço {'=>'} Pausar / Retomar</span>
+        ⬆️ ⬇️ ⬅️ ➡️ / W A S D =&gt; mover a cobra | Espaço =&gt; Pausar/Retomar
+        | Enter =&gt; Reiniciar
       </div>
     </div>
   );
