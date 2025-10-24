@@ -8,6 +8,87 @@ type Post = {
 
 const posts: Post[] = [
   {
+    id: 28,
+    title: 'Refatorando Código Legado: Um Desafio Necessário',
+    summary:
+      'Dediquei um tempo para refatorar um projeto antigo, aplicando princípios de Clean Code e Design Patterns. O resultado foi um código mais limpo, legível e de fácil manutenção.',
+    date: '10 de Novembro de 2025',
+    emoji: '♻️',
+  },
+  {
+    id: 27,
+    title: 'Aprofundando em Testes Unitários com Jest e React Testing Library',
+    summary:
+      'Intensifiquei meus estudos em testes unitários para React, utilizando Jest e React Testing Library. Aumentar a cobertura de testes traz mais segurança e qualidade para a aplicação.',
+    date: '08 de Novembro de 2025',
+    emoji: '🧪',
+  },
+  {
+    id: 26,
+    title: 'Criando um Componente de UI Reutilizável: Modal',
+    summary:
+      'Desenvolvi um componente de modal genérico e reutilizável em React, com opções de personalização e acessibilidade. Um ótimo exercício de componentização.',
+    date: '05 de Novembro de 2025',
+    emoji: '🧩',
+  },
+  {
+    id: 25,
+    title: 'Otimizando a Performance de uma Aplicação React',
+    summary:
+      'Apliquei técnicas de otimização de performance em um projeto React, como code splitting, lazy loading e memoization. A velocidade de carregamento melhorou significativamente.',
+    date: '03 de Novembro de 2025',
+    emoji: '⚡️',
+  },
+  {
+    id: 24,
+    title: 'Estudando Design Patterns: Singleton e Factory',
+    summary:
+      'Iniciei um estudo sobre Design Patterns, começando pelos padrões Singleton e Factory. Entender esses conceitos é fundamental para escrever um código mais robusto e escalável.',
+    date: '01 de Novembro de 2025',
+    emoji: '📚',
+  },
+  {
+    id: 23,
+    title: 'Adicionando Autenticação com JWT em uma API Node.js',
+    summary:
+      'Implementei um sistema de autenticação baseado em JSON Web Tokens (JWT) em uma API Node.js/Express. Uma etapa crucial para a segurança de qualquer aplicação.',
+    date: '30 de Outubro de 2025',
+    emoji: '🔐',
+  },
+  {
+    id: 22,
+    title: 'Explorando o Ecossistema do Next.js',
+    summary:
+      'Comecei a estudar Next.js para desenvolver aplicações React com renderização no lado do servidor (SSR) e geração de sites estáticos (SSG). As vantagens de performance e SEO são impressionantes.',
+    date: '28 de Outubro de 2025',
+    emoji: '🚀',
+  },
+  {
+    id: 21,
+    title: 'Gerenciamento de Estado com Redux Toolkit',
+    summary:
+      'Migrei o gerenciamento de estado de um projeto de `useState` para Redux Toolkit. A previsibilidade e a organização do estado global da aplicação melhoraram muito.',
+    date: '27 de Outubro de 2025',
+    emoji: '🔄',
+  },
+  {
+    id: 18,
+    title:
+      'Princípios de Clean Code: Escrevendo Código Legível e de Fácil Manutenção',
+    summary:
+      'Dediquei um tempo para estudar e aplicar os princípios do Clean Code de Robert C. Martin. A diferença na qualidade e legibilidade do código é notável.',
+    date: '24 de Outubro de 2025',
+    emoji: '🧼',
+  },
+  {
+    id: 15,
+    title: 'Novos projetos: E-commerce com Rails e Web Scraping',
+    summary:
+      'Estudei Ruby on Rails e desenvolvi meu primeiro projeto, um e-commerce completo com painel de administrador para gerenciar produtos e sistema de pagamento. Além disso, criei um projeto de web scraping para extrair dados da web.',
+    date: '23 de Outubro de 2025',
+    emoji: '👨‍💻',
+  },
+  {
     id: 14,
     title: 'Adicionei destaque para projetos com versão live no portfólio',
     summary:

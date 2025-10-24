@@ -20,11 +20,31 @@ const Hero = () => {
 
         <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
           Sou um desenvolvedor com foco em{' '}
-          <span className="text-primary font-medium">Back-end</span>, mas com
-          experiência em diversas áreas da tecnologia. Me interesso por projetos
-          de diversas áreas, sempre aberto a novos desafios. Busco criar
-          soluções escaláveis, bem estruturadas e com foco em qualidade e
-          eficiência.
+          <span className="text-foreground font-semibold">
+            aplicações completas
+          </span>
+          , atuando do{' '}
+          <span className="text-foreground font-semibold">backend</span> ao{' '}
+          <span className="text-foreground font-semibold">frontend</span>. Crio{' '}
+          <span className="text-foreground font-semibold">APIs</span>, gerencio{' '}
+          <span className="text-foreground font-semibold">
+            bancos de dados SQL
+          </span>{' '}
+          e busco constantemente aprender, aprimorar meu código e explorar{' '}
+          <span className="text-foreground font-semibold">
+            novas tecnologias
+          </span>{' '}
+          para entregar{' '}
+          <span className="text-foreground font-semibold">
+            soluções eficientes
+          </span>{' '}
+          e práticas no dia a dia. Gosto de enfrentar{' '}
+          <span className="text-foreground font-semibold">desafios</span> e
+          encontrar{' '}
+          <span className="text-foreground font-semibold">
+            maneiras simples
+          </span>{' '}
+          de resolver problemas reais.
         </p>
 
         <div className="flex justify-center space-x-6">
