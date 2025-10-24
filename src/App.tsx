@@ -10,6 +10,9 @@ import FinancingCalculatorPage from './pages/FinancingCalculator';
 import InvestmentCalculatorPage from './pages/InvestmentCalculator';
 import ProjectsPage from './pages/Projects';
 import SnakeGame from './components/projects/SnakeGame';
+import SurvivorRPG from './components/projects/SurvivorRPG';
+import CpfGeneratorPage from './pages/CpfGenerator';
+import PasswordGeneratorPage from './pages/PasswordGenerator';
 
 const queryClient = new QueryClient();
 
@@ -32,6 +35,15 @@ const App = () => (
             element={<FinancingCalculatorPage />}
           />
           <Route path="/projects/snake-game" element={<SnakeGame />} />
+          <Route path="/projects/survivor-rpg" element={<SurvivorRPG />} />
+          <Route
+            path="/projects/cpf-generator"
+            element={<CpfGeneratorPage />}
+          />
+          <Route
+            path="/projects/password-generator"
+            element={<PasswordGeneratorPage />}
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

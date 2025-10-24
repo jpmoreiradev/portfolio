@@ -4,6 +4,8 @@ import uniStoreImg from '../assets/images/sessionProjects/unistore.png';
 import crudNestJsImg from '../assets/images/sessionProjects/crudnestjs.png';
 import investmentCalculatorImg from '../assets/images/sessionProjects/investmentcalculator.png';
 import financingCalculatorImg from '../assets/images/sessionProjects/financingcalculator.png';
+import cpfGeneratorImg from '../assets/images/sessionProjects/cpfgenerator.png';
+import passwordGeneratorImg from '../assets/images/sessionProjects/passwordgenerator.png';
 
 interface ProjectsProps {
   limit?: number;
@@ -11,6 +13,26 @@ interface ProjectsProps {
 
 const Projects: React.FC<ProjectsProps> = ({ limit }: { limit: number }) => {
   const allProjects = [
+    {
+      title: 'Gerador de Senha',
+      description:
+        'Uma ferramenta para gerar senhas seguras com opções personalizáveis de comprimento, inclusão de números, símbolos e letras maiúsculas.',
+      image: passwordGeneratorImg,
+      technologies: ['React', 'TypeScript', 'TailwindCSS', 'Hooks', 'Vite'],
+      github:
+        'https://github.com/jpmoreiradev/portfolio/blob/main/src/components/projects/PasswordGenerator.tsx',
+      live: '/projects/password-generator',
+    },
+    {
+      title: 'Gerador e Validador de CPF',
+      description:
+        'Uma ferramenta para gerar e validar CPFs. Ideal para desenvolvedores e testadores que precisam de números de CPF válidos para seus projetos.',
+      image: cpfGeneratorImg,
+      technologies: ['React', 'TypeScript', 'TailwindCSS', 'Hooks', 'Vite'],
+      github:
+        'https://github.com/jpmoreiradev/portfolio/blob/main/src/components/projects/CpfGenerator.tsx',
+      live: '/projects/cpf-generator',
+    },
     {
       title: 'Calculadora de Investimento',
       description:

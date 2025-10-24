@@ -2,15 +2,15 @@ import { Github, Linkedin, Mail, Heart } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="py-12 section-padding border-t border-border">
+    <footer className="py-2 section-padding border-t border-border">
       <div className="max-w-4xl mx-auto">
-        <div className="text-center space-y-6">
-          <div className="flex justify-center space-x-6">
+        <div className="text-center space-y-2">
+          <div className="flex justify-center space-x-4">
             <a
               href="https://github.com/jpmoreiradev"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-lg border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110"
+              className="p-2 rounded-lg border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110"
             >
               <Github size={20} />
             </a>
@@ -18,13 +18,13 @@ const Footer = () => {
               href="https://www.linkedin.com/in/jo%C3%A3o-pedro-moreira-455b79203/"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-lg border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110"
+              className="p-2 rounded-lg border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110"
             >
               <Linkedin size={20} />
             </a>
             <a
               href="mailto:jp02120123@gmail.com"
-              className="p-3 rounded-lg border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110"
+              className="p-2 rounded-lg border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110"
             >
               <Mail size={20} />
             </a>
