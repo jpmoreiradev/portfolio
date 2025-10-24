@@ -68,7 +68,7 @@ const CpfGenerator = () => {
 
       const digit1 = calculateCpfDigit(baseDigits);
       const digitsWithFirstVerifier = [...baseDigits, digit1];
-      const digit2 = calculateCpfCpfDigit(digitsWithFirstVerifier);
+      const digit2 = calculateCpfDigit(digitsWithFirstVerifier);
 
       const rawCpf = [...baseDigits, digit1, digit2].join('');
 
