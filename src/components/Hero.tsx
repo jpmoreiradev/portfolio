@@ -1,7 +1,38 @@
+import { useState, useEffect } from 'react';
 import { Github, Linkedin, Mail, ArrowDown } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 
+const phrases = [
+  'Curto escrever código limpo e pensar em soluções que façam sentido.',
+  'Tô sempre aprendendo algo novo e buscando melhorar a cada projeto.',
+  'Gosto de ver uma ideia ganhando forma através do código e entregando valor real.',
+  'Desenvolver algo do zero e ver funcionando é o que mais me motiva.',
+  'Acredito que bons projetos nascem de colaboração e boas práticas.',
+  'Tenho prazer em resolver problemas e deixar o código mais eficiente.',
+  'Gosto de trabalhar em equipe e aprender com outras pessoas desenvolvedoras.',
+  'Busco sempre entender o “porquê” por trás do que estou construindo.',
+  'Me interesso por performance, boas arquiteturas e experiências bem feitas.',
+  'Cada linha de código é uma chance de aprender e melhorar como dev.',
+  'Gosto de ver o impacto real do que desenvolvo nas pessoas e empresas.',
+  'Aprender novas tecnologias e aplicá-las na prática é o que me move.',
+];
+
 const Hero = () => {
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [opacity, setOpacity] = useState(1);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setOpacity(0);
+      setTimeout(() => {
+        setPhraseIndex((prevIndex) => (prevIndex + 1) % phrases.length);
+        setOpacity(1);
+      }, 500);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section
       id="home"
@@ -13,37 +44,36 @@ const Hero = () => {
           <h1 className="text-5xl md:text-7xl font-bold text-foreground">
             João Pedro
           </h1>
-          <h2 className="text-3xl md:text-5xl font-bold text-muted-foreground">
-            Desenvolvedor apaixonado por transformar ideias em código.
+          <h2
+            className="text-3xl md:text-5xl font-bold text-muted-foreground transition-opacity duration-500"
+            style={{ opacity: opacity }}
+          >
+            {phrases[phraseIndex]}
           </h2>
         </div>
 
         <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
           Sou um desenvolvedor com foco em{' '}
-          <span className="text-foreground font-semibold">
+          <span className="text-primary font-semibold">
             aplicações completas
           </span>
           , atuando do{' '}
-          <span className="text-foreground font-semibold">backend</span> ao{' '}
-          <span className="text-foreground font-semibold">frontend</span>. Crio{' '}
-          <span className="text-foreground font-semibold">APIs</span>, gerencio{' '}
-          <span className="text-foreground font-semibold">
+          <span className="text-primary font-semibold">backend</span> ao{' '}
+          <span className="text-primary font-semibold">frontend</span>. Crio{' '}
+          <span className="text-primary font-semibold">APIs</span>, gerencio{' '}
+          <span className="text-primary font-semibold">
             bancos de dados SQL
           </span>{' '}
           e busco constantemente aprender, aprimorar meu código e explorar{' '}
-          <span className="text-foreground font-semibold">
-            novas tecnologias
-          </span>{' '}
+          <span className="text-primary font-semibold">novas tecnologias</span>{' '}
           para entregar{' '}
-          <span className="text-foreground font-semibold">
+          <span className="text-primary font-semibold">
             soluções eficientes
           </span>{' '}
           e práticas no dia a dia. Gosto de enfrentar{' '}
-          <span className="text-foreground font-semibold">desafios</span> e
+          <span className="text-primary font-semibold">desafios</span> e
           encontrar{' '}
-          <span className="text-foreground font-semibold">
-            maneiras simples
-          </span>{' '}
+          <span className="text-primary font-semibold">maneiras simples</span>{' '}
           de resolver problemas reais.
         </p>
 
@@ -73,7 +103,7 @@ const Hero = () => {
           <a
             href="https://wa.me/5588997307495?text=Olá%2C%20gostaria%20de%20falar%20com%20você%20sobre%20o%20seu%20portfólio!"
             target="_blank"
-            className="p-3 rounded-lg border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110"
+            className="p-3 rounded-lg border border-border hover:border-primary text-muted-foreground hover.text-primary transition-all duration-200 hover:scale-110"
             rel="noreferrer"
           >
             <FaWhatsapp className="text-green-500 w-6 h-6" />

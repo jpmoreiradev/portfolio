@@ -28,7 +28,7 @@ const IndexPage = () => {
         <Hero />
         <About />
         <Experience />
-        <Projects limit={3} />
+        <Projects limit={5} />
         <Contact />
       </main>
       <Footer />

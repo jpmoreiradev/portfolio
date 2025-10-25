@@ -9,8 +9,8 @@ import NotFound from './pages/NotFound';
 import FinancingCalculatorPage from './pages/FinancingCalculator';
 import InvestmentCalculatorPage from './pages/InvestmentCalculator';
 import ProjectsPage from './pages/Projects';
-import SnakeGame from './components/projects/SnakeGame';
-import SurvivorRPG from './components/projects/SurvivorRPG';
+import SnakeGamePage from './pages/SnakeGame';
+import SurvivorRPGPage from './pages/SurvivorRPG';
 import CpfGeneratorPage from './pages/CpfGenerator';
 import PasswordGeneratorPage from './pages/PasswordGenerator';
 
@@ -34,8 +34,8 @@ const App = () => (
             path="/projects/financing-calculator"
             element={<FinancingCalculatorPage />}
           />
-          <Route path="/projects/snake-game" element={<SnakeGame />} />
-          <Route path="/projects/survivor-rpg" element={<SurvivorRPG />} />
+          <Route path="/projects/snake-game" element={<SnakeGamePage />} />
+          <Route path="/projects/survivor-rpg" element={<SurvivorRPGPage />} />
           <Route
             path="/projects/cpf-generator"
             element={<CpfGeneratorPage />}

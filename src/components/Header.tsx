@@ -39,7 +39,7 @@ const Header = () => {
   ];
 
   const homeHeader = [
-    { href: '/#', label: 'Sobre' },
+    { href: '/#sobre', label: 'Sobre' },
     { href: '#experiencia', label: 'Experiência' },
     { href: '#projetos', label: 'Projetos' },
     { href: '#contato', label: 'Contato' },

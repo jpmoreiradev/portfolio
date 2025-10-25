@@ -6,6 +6,18 @@ import investmentCalculatorImg from '../assets/images/sessionProjects/investment
 import financingCalculatorImg from '../assets/images/sessionProjects/financingcalculator.png';
 import cpfGeneratorImg from '../assets/images/sessionProjects/cpfgenerator.png';
 import passwordGeneratorImg from '../assets/images/sessionProjects/passwordgenerator.png';
+import ecommerceRailsImg from '../assets/images/sessionProjects/ecomercerails.png';
+import snakeGameImg from '../assets/images/sessionProjects/snakegame.png';
+import survivorRpgImg from '../assets/images/sessionProjects/survivorrpg.png';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
 
 interface ProjectsProps {
   limit?: number;
@@ -22,6 +34,16 @@ const Projects: React.FC<ProjectsProps> = ({ limit }: { limit: number }) => {
       github:
         'https://github.com/jpmoreiradev/portfolio/blob/main/src/components/projects/PasswordGenerator.tsx',
       live: '/projects/password-generator',
+    },
+    {
+      title: 'Survivor RPG',
+      description:
+        'Um jogo de RPG de sobrevivência em texto. O jogador precisa tomar decisões para sobreviver em um mundo pós-apocalíptico.',
+      image: survivorRpgImg,
+      technologies: ['React', 'TypeScript', 'TailwindCSS', 'Hooks', 'Vite'],
+      github:
+        'https://github.com/jpmoreiradev/portfolio/blob/main/src/components/projects/SurvivorRPG.tsx',
+      live: '/projects/survivor-rpg',
     },
     {
       title: 'Gerador e Validador de CPF',
@@ -44,6 +66,23 @@ const Projects: React.FC<ProjectsProps> = ({ limit }: { limit: number }) => {
       live: '/projects/investment-calculator',
     },
     {
+      title: 'E-commerce com Ruby on Rails',
+      description:
+        'Uma plataforma de e-commerce completa desenvolvida com Ruby on Rails, com funcionalidades de carrinho de compras, gerenciamento de produtos, e integração de pagamentos.',
+      image: ecommerceRailsImg,
+      technologies: [
+        'Ruby on Rails',
+        'PostgreSQL',
+        'TailwindCSS',
+        'Stripe',
+        'RSpec',
+        'Capybara',
+      ],
+      github: 'https://github.com/jpmoreiradev/rails-ecommerce',
+      detailedInfo:
+        'Este é um projeto de e-commerce full-stack construído com Ruby on Rails. Ele inclui um painel de administração para gerenciar produtos, pedidos e usuários. A integração com o Stripe permite pagamentos seguros com cartão de crédito. O projeto foi testado extensivamente com RSpec e Capybara para garantir a qualidade do código.',
+    },
+    {
       title: 'Calculadora de Financiamento',
       description:
         'Uma calculadora interativa que simula financiamentos com base em valor total, entrada, taxa de juros e prazo. Exibe parcelas mensais, total pago, juros e tabela de amortização. Desenvolvida com React',
@@ -52,6 +91,16 @@ const Projects: React.FC<ProjectsProps> = ({ limit }: { limit: number }) => {
       github:
         'https://github.com/jpmoreiradev/portfolio/blob/main/src/components/projects/InvestmentCalculator.tsx',
       live: '/projects/financing-calculator',
+    },
+    {
+      title: 'Snake Game',
+      description:
+        'Um jogo clássico da cobrinha desenvolvido com React e TypeScript. O objetivo é comer o máximo de frutas possível sem bater nas paredes ou em si mesmo.',
+      image: snakeGameImg,
+      technologies: ['React', 'TypeScript', 'TailwindCSS', 'Hooks', 'Vite'],
+      github:
+        'https://github.com/jpmoreiradev/portfolio/blob/main/src/components/projects/SnakeGame.tsx',
+      live: '/projects/snake-game',
     },
     {
       title: 'NestJS CRUD API',
@@ -68,6 +117,8 @@ const Projects: React.FC<ProjectsProps> = ({ limit }: { limit: number }) => {
         'Bcryptjs',
       ],
       github: 'https://github.com/jpmoreiradev/nestjs-crud',
+      detailedInfo:
+        'Uma API RESTful robusta construída com NestJS, seguindo as melhores práticas de arquitetura de software. Utiliza o Prisma como ORM para interagir com o banco de dados PostgreSQL. A autenticação é feita com JWT e as senhas são armazenadas de forma segura usando bcrypt. O projeto é totalmente configurado com ESLint e Prettier para manter a qualidade e a consistência do código.',
     },
     {
       title: 'UNISTORE E-commerce Platform',
@@ -84,7 +135,8 @@ const Projects: React.FC<ProjectsProps> = ({ limit }: { limit: number }) => {
         'Sequelize',
       ],
       github: 'https://github.com/jpmoreiradev/unistore',
-      // live: '',
+      detailedInfo:
+        'Uma plataforma de e-commerce que consome a API do Mercado Livre para buscar produtos, exibir detalhes e permitir que os usuários façam compras. O backend foi construído com Node.js e Express, e o Sequelize foi usado como ORM. A autenticação de usuário é implementada com JWT.',
     },
   ];
 
@@ -107,6 +159,11 @@ const Projects: React.FC<ProjectsProps> = ({ limit }: { limit: number }) => {
     TailwindCSS: 'https://tailwindcss.com/',
     Hooks: 'https://react.dev/reference/react/hooks',
     Vite: 'https://vite.dev/',
+    'Ruby on Rails': 'https://rubyonrails.org/',
+    Stripe: 'https://stripe.com/',
+    RSpec: 'https://rspec.info/',
+    Capybara: 'https://teamcapybara.github.io/capybara/',
+    PostgreSQL: 'https://www.postgresql.org/',
   };
 
   return (
@@ -136,19 +193,62 @@ const Projects: React.FC<ProjectsProps> = ({ limit }: { limit: number }) => {
                       index % 2 === 1 ? 'md:col-start-2' : ''
                     }`}
                   >
-                    <div className="aspect-video rounded-lg overflow-hidden bg-card border border-border relative">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                      {hasLive && (
-                        <span className="absolute top-2 left-2 bg-green-500 text-white text-xs font-semibold px-2 py-1 rounded">
-                          LIVE
-                        </span>
-                      )}
-                    </div>
-                    <div className="absolute inset-0 bg-primary/20 rounded-lg group-hover:bg-transparent transition-colors duration-300"></div>
+                    {project.live ? (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <div className="aspect-video rounded-lg overflow-hidden bg-card border border-border relative">
+                          <img
+                            src={project.image}
+                            alt={project.title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                          {hasLive && (
+                            <span className="absolute top-2 left-2 bg-green-500 text-white text-xs font-semibold px-2 py-1 rounded">
+                              LIVE
+                            </span>
+                          )}
+                        </div>
+                        <div className="absolute inset-0 bg-primary/20 rounded-lg group-hover:bg-transparent transition-colors duration-300"></div>
+                      </a>
+                    ) : (
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <div className="aspect-video rounded-lg overflow-hidden bg-card border border-border relative cursor-pointer">
+                            <img
+                              src={project.image}
+                              alt={project.title}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            />
+                            <div className="absolute inset-0 bg-primary/20 rounded-lg group-hover:bg-transparent transition-colors duration-300"></div>
+                          </div>
+                        </DialogTrigger>
+                        <DialogContent className="sm:max-w-[425px]">
+                          <DialogHeader>
+                            <DialogTitle>{project.title}</DialogTitle>
+                            <DialogDescription>
+                              {project.detailedInfo || project.description}
+                              <p className="mt-4 text-sm text-primary font-semibold">
+                                Este projeto ainda não está disponível online,
+                                mas você pode ver o código-fonte no GitHub.
+                              </p>
+                            </DialogDescription>
+                          </DialogHeader>
+                          <DialogFooter className="sm:justify-start">
+                            <a
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="p-2 rounded-lg border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110"
+                            >
+                              <Github size={20} />
+                            </a>
+                          </DialogFooter>
+                        </DialogContent>
+                      </Dialog>
+                    )}
                   </div>
 
                   {/* Conteúdo */}
@@ -158,9 +258,6 @@ const Projects: React.FC<ProjectsProps> = ({ limit }: { limit: number }) => {
                     }`}
                   >
                     <div>
-                      {/* <p className="text-center  text-primary text-sm font-medium">
-                        Projeto em Destaque
-                      </p> */}
                       <h3 className="text-center text-2xl font-bold text-foreground">
                         {project.title}
                       </h3>

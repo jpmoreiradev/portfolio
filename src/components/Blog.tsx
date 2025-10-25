@@ -59,7 +59,7 @@ const posts: Post[] = [
     id: 22,
     title: 'Explorando o Ecossistema do Next.js',
     summary:
-      'Comecei a estudar Next.js para desenvolver aplicações React com renderização no lado do servidor (SSR) e geração de sites estáticos (SSG). As vantagens de performance e SEO são impressionantes.',
+      'Comecei a estudar Next.js para desenvolver aplicações React com renderização no lado do servidor (SSR) e geração de sites estáticos (SSG).',
     date: '28 de Outubro de 2025',
     emoji: '🚀',
   },
@@ -72,7 +72,7 @@ const posts: Post[] = [
     emoji: '🔄',
   },
   {
-    id: 18,
+    id: 17,
     title:
       'Princípios de Clean Code: Escrevendo Código Legível e de Fácil Manutenção',
     summary:
@@ -81,20 +81,28 @@ const posts: Post[] = [
     emoji: '🧼',
   },
   {
-    id: 15,
+    id: 16,
     title: 'Novos projetos: E-commerce com Rails e Web Scraping',
     summary:
       'Estudei Ruby on Rails e desenvolvi meu primeiro projeto, um e-commerce completo com painel de administrador para gerenciar produtos e sistema de pagamento. Além disso, criei um projeto de web scraping para extrair dados da web.',
-    date: '23 de Outubro de 2025',
+    date: '15 de Setembro de 2025',
     emoji: '👨‍💻',
   },
   {
-    id: 14,
-    title: 'Adicionei destaque para projetos com versão live no portfólio',
+    id: 15,
+    title: 'Melhorias na Usabilidade e Acessibilidade',
     summary:
-      'Implementei um destaque visual para os projetos que possuem link live, adicionando borda colorida, sombra e selo "LIVE" na imagem. Isso facilita a identificação dos projetos interativos e melhora a experiência dos visitantes.',
-    date: '08 de Julho de 2025',
-    emoji: '✨',
+      'Fiz uma revisão completa do portfólio, focando em melhorias de usabilidade e acessibilidade. Ajustei contrastes de cores, adicionei atributos ARIA e otimizei a navegação pelo teclado.',
+    date: '20 de Agosto de 2025',
+    emoji: '♿',
+  },
+  {
+    id: 14,
+    title: 'Criei a Calculadora de Financiamento',
+    summary:
+      'Desenvolvi uma calculadora de financiamento para simular empréstimos. O usuário pode inserir o valor, a taxa de juros e o prazo para ver o valor das parcelas e o total pago.',
+    date: '15 de Julho de 2025',
+    emoji: '💸',
   },
   {
     id: 13,

@@ -6,6 +6,23 @@ const Experience = () => {
 
   const experiences = [
     {
+      title: 'Hekate Software',
+      company: 'Hekate Software 2025',
+      position: 'Junior Developer',
+      period: 'Outubro 2025 - Present',
+      description: [
+        'Desenvolvimento, análise e correção de código e a stack',
+        'Participação em diversos projetos utilizando Ruby on Rails, com foco em criação de APIs REST e manutenção de sistemas internos',
+        'Implementação de novas funcionalidades com Hotwire, Stimulus e Turbo para melhorar a experiência do usuário',
+        'Integração com bancos de dados PostgreSQL e uso avançado de Active Record para consultas otimizadas',
+        'Configuração e monitoramento de background jobs com Sidekiq para processamento assíncrono',
+        'Aplicação de boas práticas de versionamento com Git e revisão de código em equipe',
+        'Colaboração em ambientes Linux com Docker para desenvolvimento e deploy consistentes',
+        'Aprimoramento da performance e segurança das aplicações através de refatoração e testes automatizados',
+      ],
+      link: 'https://www.linkedin.com/company/hekate-software/',
+    },
+    {
       title: 'Moreira Especialidades',
       company: 'Moreira Especialidades 2024',
       position: 'Desenvolvedor Full stack',
