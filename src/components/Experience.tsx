@@ -1,69 +1,21 @@
 import { useState } from 'react';
 import { ExternalLink } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const Experience = () => {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState(0);
 
-  const experiences = [
-    {
-      title: 'Hekate Software',
-      company: 'Hekate Software 2025',
-      position: 'Junior Developer',
-      period: 'Outubro 2025 - Present',
-      description: [
-        'Desenvolvimento, análise e correção de código e a stack',
-        'Participação em diversos projetos utilizando Ruby on Rails, com foco em criação de APIs REST e manutenção de sistemas internos',
-        'Implementação de novas funcionalidades com Hotwire, Stimulus e Turbo para melhorar a experiência do usuário',
-        'Integração com bancos de dados PostgreSQL e uso avançado de Active Record para consultas otimizadas',
-        'Configuração e monitoramento de background jobs com Sidekiq para processamento assíncrono',
-        'Aplicação de boas práticas de versionamento com Git e revisão de código em equipe',
-        'Colaboração em ambientes Linux com Docker para desenvolvimento e deploy consistentes',
-        'Aprimoramento da performance e segurança das aplicações através de refatoração e testes automatizados',
-      ],
-      link: 'https://www.linkedin.com/company/hekate-software/',
-    },
-    {
-      title: 'Moreira Especialidades',
-      company: 'Moreira Especialidades 2024',
-      position: 'Desenvolvedor Full stack',
-      period: 'Freelancer',
-      description: [
-        'Desenvolvimento de um sistema de gerenciamento de filas personalizado para atendimento de pacientes',
-        'Implementação de painel de chamadas e controle de senhas em tempo real',
-        'Utilização de tecnologias como Node.js, JavaScript e bancos de dados SQL para gestão eficiente dos atendimentos',
-        'Entrega de solução funcional com foco em melhoria da experiência do usuário e organização da recepção',
-      ],
-      link: 'https://www.instagram.com/moreiraespecialidades/',
-    },
-    {
-      title: 'Esportudo Company',
-      company: 'Esportudo Company 2023',
-      position: 'Backend Engineer',
-      period: 'Abril 2023 - Outubro 2023',
-      description: [
-        'Foco principal em desenvolvimento Backend com Node.js, JavaScript e TypeScript',
-        'Construção de endpoints otimizados utilizando Express',
-        'Gerenciamento eficiente de bancos de dados SQL',
-        'Criação de testes automatizados com Jest e Mocha',
-        'Garantia de eficiência e escalabilidade nas aplicações desenvolvidas',
-        'Uso de contêineres Docker para facilitar a compatibilidade e distribuição de aplicações',
-      ],
-      link: 'https://www.esportudo.com/',
-    },
-    {
-      title: 'Esportudo Company',
-      company: 'Esportudo Company 2022',
-      position: 'Developer Intern',
-      period: 'Janeiro 2022 - Abril 2023',
-      description: [
-        'Atuação no desenvolvimento de software com foco em APIs',
-        'Utilização de Node.js, JavaScript e TypeScript na criação de serviços',
-        'Proficiente na modelagem e manipulação de dados com SQL',
-        'Aprimoramento de habilidades com Express na construção de endpoints RESTful',
-      ],
-      link: 'https://www.esportudo.com/',
-    },
-  ];
+  const experiences = t('experience.experiences', {
+    returnObjects: true,
+  }) as Array<{
+    title: string;
+    company: string;
+    position: string;
+    period: string;
+    description: string[];
+    link: string;
+  }>;
 
   return (
     <section id="experiencia" className="py-20 section-padding bg-muted/30">
@@ -71,7 +23,7 @@ const Experience = () => {
         <div className="space-y-12">
           <div className="text-center space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Experiência
+              {t('experience.title')}
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
           </div>

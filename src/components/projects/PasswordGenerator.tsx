@@ -18,7 +18,7 @@ const PasswordGenerator = () => {
     const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
     const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const numberChars = '0123456789';
-    const symbolChars = '!@#$%^&*()_+-=[]{}\'|:<>?,./';
+    const symbolChars = "!@#$%^&*()_+-=[]{}'|:<>?,./";
 
     let charPool = lowercaseChars;
     if (includeUppercase) charPool += uppercaseChars;
@@ -35,11 +35,12 @@ const PasswordGenerator = () => {
 
   const handleCopyToClipboard = () => {
     if (password) {
-      navigator.clipboard.writeText(password)
+      navigator.clipboard
+        .writeText(password)
         .then(() => {
           toast.success('Senha copiada para a área de transferência!');
         })
-        .catch(err => {
+        .catch((err) => {
           console.error('Failed to copy: ', err);
           toast.error('Falha ao copiar a senha.');
         });
@@ -52,7 +53,9 @@ const PasswordGenerator = () => {
     <div className="p-4">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle className="text-center text-2xl">Gerador de Senha</CardTitle>
+          <CardTitle className="text-center text-2xl">
+            Gerador de Senha
+          </CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="relative">
@@ -89,18 +92,42 @@ const PasswordGenerator = () => {
             </div>
 
             <div className="flex items-center space-x-2">
-              <Checkbox id="uppercase" checked={includeUppercase} onCheckedChange={(checked) => setIncludeUppercase(Boolean(checked))} />
-              <label htmlFor="uppercase" className="font-medium">Incluir Letras Maiúsculas</label>
+              <Checkbox
+                id="uppercase"
+                checked={includeUppercase}
+                onCheckedChange={(checked) =>
+                  setIncludeUppercase(Boolean(checked))
+                }
+              />
+              <label htmlFor="uppercase" className="font-medium">
+                Incluir Letras Maiúsculas
+              </label>
             </div>
 
             <div className="flex items-center space-x-2">
-              <Checkbox id="numbers" checked={includeNumbers} onCheckedChange={(checked) => setIncludeNumbers(Boolean(checked))} />
-              <label htmlFor="numbers" className="font-medium">Incluir Números</label>
+              <Checkbox
+                id="numbers"
+                checked={includeNumbers}
+                onCheckedChange={(checked) =>
+                  setIncludeNumbers(Boolean(checked))
+                }
+              />
+              <label htmlFor="numbers" className="font-medium">
+                Incluir Números
+              </label>
             </div>
 
             <div className="flex items-center space-x-2">
-              <Checkbox id="symbols" checked={includeSymbols} onCheckedChange={(checked) => setIncludeSymbols(Boolean(checked))} />
-              <label htmlFor="symbols" className="font-medium">Incluir Símbolos</label>
+              <Checkbox
+                id="symbols"
+                checked={includeSymbols}
+                onCheckedChange={(checked) =>
+                  setIncludeSymbols(Boolean(checked))
+                }
+              />
+              <label htmlFor="symbols" className="font-medium">
+                Incluir Símbolos
+              </label>
             </div>
           </div>
 

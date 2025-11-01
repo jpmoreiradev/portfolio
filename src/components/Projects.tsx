@@ -1,4 +1,5 @@
 import { Github, ExternalLink } from 'lucide-react';
+import WeatherDashboard from '@/components/WeatherDashboard';
 
 import uniStoreImg from '../assets/images/sessionProjects/unistore.png';
 import crudNestJsImg from '../assets/images/sessionProjects/crudnestjs.png';
@@ -9,6 +10,7 @@ import passwordGeneratorImg from '../assets/images/sessionProjects/passwordgener
 import ecommerceRailsImg from '../assets/images/sessionProjects/ecomercerails.png';
 import snakeGameImg from '../assets/images/sessionProjects/snakegame.png';
 import survivorRpgImg from '../assets/images/sessionProjects/survivorrpg.png';
+import weatherDashboardImg from '../assets/images/sessionProjects/weatherdashboard.png';
 import {
   Dialog,
   DialogContent,
@@ -21,10 +23,30 @@ import {
 
 interface ProjectsProps {
   limit?: number;
+  showWeatherComponent?: boolean;
 }
 
-const Projects: React.FC<ProjectsProps> = ({ limit }: { limit: number }) => {
-  const allProjects = [
+const Projects: React.FC<ProjectsProps> = ({ limit, showWeatherComponent = false }) => {
+  const rawProjects = [
+    {
+      title: 'Weather Dashboard',
+      description:
+        'Um painel de previsão do tempo em tempo real que exibe informações meteorológicas detalhadas, incluindo temperatura, umidade, velocidade do vento e previsão para os próximos dias. Integrado com API OpenWeatherMap.',
+      image: weatherDashboardImg,
+      technologies: [
+        'React',
+        'TypeScript',
+        'TailwindCSS',
+        'Axios',
+        'OpenWeatherMap API',
+        'Vite',
+      ],
+      github: 'https://github.com/jpmoreiradev/weather-dashboard',
+      live: '/projects/weather-dashboard',
+      showInIntro: false,
+      detailedInfo:
+        'Um dashboard completo de clima que permite aos usuários buscar informações meteorológicas de qualquer cidade do mundo. O projeto utiliza a API do OpenWeatherMap para obter dados em tempo real, incluindo temperatura atual, sensação térmica, umidade, pressão atmosférica, velocidade do vento e previsão para os próximos 5 dias. A interface é responsiva e intuitiva, com animações suaves e ícones dinâmicos que mudam de acordo com as condições climáticas. Implementa debounce na busca para otimizar chamadas à API e armazena cidades favoritas no localStorage.',
+    },
     {
       title: 'Gerador de Senha',
       description:
@@ -140,6 +162,11 @@ const Projects: React.FC<ProjectsProps> = ({ limit }: { limit: number }) => {
     },
   ];
 
+  // Se mostrar o componente, remove do array. Se não mostrar o componente, mantém no array
+  const allProjects = showWeatherComponent
+    ? rawProjects.filter((project) => project.title !== 'Weather Dashboard')
+    : rawProjects;
+
   const projectsToRender = limit ? allProjects.slice(0, limit) : allProjects;
 
   const techLinks: Record<string, string> = {
@@ -164,6 +191,7 @@ const Projects: React.FC<ProjectsProps> = ({ limit }: { limit: number }) => {
     RSpec: 'https://rspec.info/',
     Capybara: 'https://teamcapybara.github.io/capybara/',
     PostgreSQL: 'https://www.postgresql.org/',
+    'OpenWeatherMap API': 'https://openweathermap.org/api',
   };
 
   return (
@@ -176,6 +204,9 @@ const Projects: React.FC<ProjectsProps> = ({ limit }: { limit: number }) => {
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
           </div>
+
+          {/* Mostra o componente WeatherDashboard apenas se showWeatherComponent for true */}
+          {showWeatherComponent && <WeatherDashboard />}
 
           <div className="space-y-16">
             {projectsToRender.map((project, index) => {

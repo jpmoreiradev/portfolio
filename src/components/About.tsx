@@ -1,4 +1,8 @@
+import { useTranslation } from 'react-i18next';
+
 const About = () => {
+  const { t } = useTranslation();
+
   const mainSkills = [
     { name: 'Ruby on Rails', link: 'https://rubyonrails.org/' },
     { name: 'React', link: 'https://reactjs.org/' },
@@ -32,53 +36,30 @@ const About = () => {
         <div className="space-y-12">
           <div className="text-center space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Sobre mim
+              {t('about.title')}
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
           </div>
 
           <div>
             <div className="space-y-6 animate-fade-in">
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                Olá! Meu nome é{' '}
-                <span className="text-primary font-semibold">João Pedro</span> e
-                sou apaixonado por resolver problemas através da tecnologia.
-                Gosto de aprender, construir e contribuir com projetos que façam
-                a diferença.
-              </p>
+              <p
+                className="text-muted-foreground text-lg leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: t('about.intro') }}
+              />
+
+              <p
+                className="text-muted-foreground text-lg leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: t('about.experience') }}
+              />
+
+              <p
+                className="text-muted-foreground text-lg leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: t('about.goal') }}
+              />
 
               <p className="text-muted-foreground text-lg leading-relaxed">
-                Desde 2020 venho me dedicando à construção de soluções digitais,
-                atuando como{' '}
-                <span className="text-primary">desenvolvedor Back-end</span>. Já
-                trabalhei com{' '}
-                <span className="text-primary">
-                  bancos de dados relacionais e não-relacionais
-                </span>
-                , desenvolvi{' '}
-                <span className="text-primary">APIs otimizadas</span> usando
-                Express e Node.js, e implementei testes automatizados com{' '}
-                <span className="text-primary">Jest</span> e{' '}
-                <span className="text-primary">Mocha</span>. Também tenho
-                experiência com <span className="text-primary">Docker</span>{' '}
-                para conteinerização de aplicações, versionamento com{' '}
-                <span className="text-primary">Git</span>, e já participei de
-                projetos que exigiram integração com serviços externos e boas
-                práticas de segurança.
-              </p>
-
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                Sempre busco criar produtos de qualidade, com foco em{' '}
-                <span className="text-primary">performance</span> e{' '}
-                <span className="text-primary">acessibilidade</span>. Meu
-                objetivo é entregar soluções que realmente agreguem valor,
-                proporcionando uma experiência positiva para o usuário e
-                facilidade de manutenção para as equipes de desenvolvimento.
-              </p>
-
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                Aqui estão algumas tecnologias com as quais tenho trabalhado
-                recentemente:
+                {t('about.techIntro')}
               </p>
 
               <div className="space-y-4">

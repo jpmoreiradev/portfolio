@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { ThemeSwitcher } from './ThemeSwitcher';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 interface InterfaceHeader {
   href: string;
@@ -8,6 +11,7 @@ interface InterfaceHeader {
 }
 
 const Header = () => {
+  const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isBlogPage, setIsBlogPage] = useState(false);
@@ -28,22 +32,22 @@ const Header = () => {
     setIsProjectsPage(currentPath.startsWith('/projects'));
   }, []);
 
-  const returnHome = [{ href: '/', label: 'Voltar' }];
+  const returnHome = [{ href: '/', label: t('header.back') }];
 
   const returnProjects = [
     {
       href: '/',
-      label: 'Voltar',
+      label: t('header.back'),
       onClick: () => sessionStorage.setItem('scrollTo', 'projetos'),
     },
   ];
 
   const homeHeader = [
-    { href: '/#sobre', label: 'Sobre' },
-    { href: '#experiencia', label: 'Experiência' },
-    { href: '#projetos', label: 'Projetos' },
-    { href: '#contato', label: 'Contato' },
-    { href: '/blogs', label: 'Blogs' },
+    { href: '/#sobre', label: t('header.about') },
+    { href: '#experiencia', label: t('header.experience') },
+    { href: '#projetos', label: t('header.projects') },
+    { href: '#contato', label: t('header.contact') },
+    { href: '/blogs', label: t('header.blogs') },
   ];
 
   const navItems = isProjectsPage
@@ -84,6 +88,7 @@ const Header = () => {
     >
       <nav className="section-padding py-4">
         <div className="flex justify-between items-center">
+          {/* Logo */}
           <a
             href="/"
             className="text-2xl font-bold text-gradient hover:scale-105 transition-transform duration-200"
@@ -91,7 +96,8 @@ const Header = () => {
             jpmoreiradev.com.br
           </a>
 
-          <div className="hidden md:flex space-x-8">
+          {/* Nav Items + Language Switcher + Theme Switcher (Desktop Right) */}
+          <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item: InterfaceHeader) => (
               <a
                 key={item.href}
@@ -103,14 +109,25 @@ const Header = () => {
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
+            <LanguageSwitcher />
+            <ThemeSwitcher />
           </div>
 
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-foreground hover:text-primary transition-colors duration-200"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Mobile View */}
+          <div className="flex md:hidden items-center justify-between w-full">
+            <div className="flex items-center">
+              <LanguageSwitcher />
+            </div>
+            <div className="flex items-center space-x-2">
+              <ThemeSwitcher />
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="text-foreground hover:text-primary transition-colors duration-200"
+              >
+                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
+          </div>
         </div>
 
         {isMobileMenuOpen && (

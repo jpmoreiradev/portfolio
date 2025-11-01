@@ -1,0 +1,134 @@
+{
+  "header": {
+    "about": "About",
+    "experience": "Experience",
+    "projects": "Projects",
+    "contact": "Contact",
+    "blogs": "Blogs",
+    "back": "Back"
+  },
+  "hero": {
+    "greeting": "Hello, my name is",
+    "name": "João Pedro",
+    "phrases": [
+      "I enjoy writing clean code and thinking of solutions that make sense.",
+      "I'm always learning something new and seeking to improve with each project.",
+      "I like seeing an idea take shape through code and deliver real value.",
+      "Building something from scratch and seeing it work is what motivates me most.",
+      "I believe good projects are born from collaboration and best practices.",
+      "I take pleasure in solving problems and making code more efficient.",
+      "I enjoy working in teams and learning from other developers.",
+      "I always seek to understand the 'why' behind what I'm building.",
+      "I'm interested in performance, good architectures, and well-crafted experiences.",
+      "Every line of code is a chance to learn and improve as a developer.",
+      "I like seeing the real impact of what I develop on people and companies.",
+      "Learning new technologies and applying them in practice is what drives me."
+    ],
+    "description": "I'm a developer focused on <strong>full-stack applications</strong>, working from <strong>backend</strong> to <strong>frontend</strong>. I create <strong>APIs</strong>, manage <strong>SQL databases</strong>, and constantly seek to learn, improve my code, and explore <strong>new technologies</strong> to deliver <strong>efficient solutions</strong> and practical day-to-day work. I enjoy facing <strong>challenges</strong> and finding <strong>simple ways</strong> to solve real problems.",
+    "cta": "Let's get started"
+  },
+  "about": {
+    "title": "About Me",
+    "intro": "Hello! My name is <strong>João Pedro</strong> and I'm passionate about solving problems through technology. I enjoy learning, building, and contributing to projects that make a difference.",
+    "experience": "Since 2020, I've been dedicated to building digital solutions, working as a <strong>Back-end developer</strong>. I've worked with <strong>relational and non-relational databases</strong>, developed <strong>optimized APIs</strong> using Express and Node.js, and implemented automated tests with <strong>Jest</strong> and <strong>Mocha</strong>. I also have experience with <strong>Docker</strong> for application containerization, version control with <strong>Git</strong>, and have participated in projects that required integration with external services and security best practices.",
+    "goal": "I always seek to create quality products, focusing on <strong>performance</strong> and <strong>accessibility</strong>. My goal is to deliver solutions that truly add value, providing a positive user experience and ease of maintenance for development teams.",
+    "techIntro": "Here are some technologies I've been working with recently:"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "I'm always interested in new opportunities and interesting projects. If you have a question or just want to say hi, I'll be happy to respond!",
+    "letsChat": "Let's talk",
+    "email": "Email",
+    "phone": "Phone",
+    "location": "Location",
+    "locationValue": "Banabuiú, Brazil",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "subject": "Subject",
+      "subjectPlaceholder": "Message subject",
+      "message": "Message",
+      "messagePlaceholder": "Your message...",
+      "send": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully!",
+      "error": "Error sending message. Please try again."
+    }
+  },
+  "theme": {
+    "toggle": "Toggle theme"
+  },
+  "language": {
+    "toggle": "Toggle language"
+  },
+  "experience": {
+    "title": "Experience",
+    "experiences": [
+      {
+        "title": "Hekate Software",
+        "company": "Hekate Software 2025",
+        "position": "Junior Developer",
+        "period": "October 2025 - Present",
+        "description": [
+          "Development, analysis, and code correction across the stack",
+          "Participation in various projects using Ruby on Rails, focusing on REST API creation and internal system maintenance",
+          "Implementation of new features with Hotwire, Stimulus, and Turbo to improve user experience",
+          "Integration with PostgreSQL databases and advanced use of Active Record for optimized queries",
+          "Configuration and monitoring of background jobs with Sidekiq for asynchronous processing",
+          "Application of version control best practices with Git and team code review",
+          "Collaboration in Linux environments with Docker for consistent development and deployment",
+          "Performance and security improvement through refactoring and automated testing"
+        ],
+        "link": "https://www.linkedin.com/company/hekate-software/"
+      },
+      {
+        "title": "Moreira Especialidades",
+        "company": "Moreira Especialidades 2024",
+        "position": "Full Stack Developer",
+        "period": "Freelancer",
+        "description": [
+          "Development of a custom queue management system for patient care",
+          "Implementation of call panel and real-time password control",
+          "Use of technologies like Node.js, JavaScript, and SQL databases for efficient appointment management",
+          "Delivery of functional solution focused on improving user experience and reception organization"
+        ],
+        "link": "https://www.instagram.com/moreiraespecialidades/"
+      },
+      {
+        "title": "Esportudo Company",
+        "company": "Esportudo Company 2023",
+        "position": "Backend Engineer",
+        "period": "April 2023 - October 2023",
+        "description": [
+          "Main focus on Backend development with Node.js, JavaScript, and TypeScript",
+          "Building optimized endpoints using Express",
+          "Efficient SQL database management",
+          "Creation of automated tests with Jest and Mocha",
+          "Ensuring efficiency and scalability in developed applications",
+          "Use of Docker containers to facilitate application compatibility and distribution"
+        ],
+        "link": "https://www.esportudo.com/"
+      },
+      {
+        "title": "Esportudo Company",
+        "company": "Esportudo Company 2022",
+        "position": "Developer Intern",
+        "period": "January 2022 - April 2023",
+        "description": [
+          "Software development with focus on APIs",
+          "Use of Node.js, JavaScript, and TypeScript in service creation",
+          "Proficient in data modeling and manipulation with SQL",
+          "Skill enhancement with Express in building RESTful endpoints"
+        ],
+        "link": "https://www.esportudo.com/"
+      }
+    ]
+  },
+  "footer": {
+    "builtWith": "Built with",
+    "by": "by JPmoreira",
+    "copyright": "© 2025 All rights reserved."
+  }
+}

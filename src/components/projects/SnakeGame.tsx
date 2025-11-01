@@ -206,7 +206,6 @@ const SnakeGame: React.FC = () => {
         className="border-2 border-gray-500 rounded bg-black"
       />
 
-      {/* Controles */}
       <div className="mt-2 text-white text-center">
         ⬆️ ⬇️ ⬅️ ➡️ / W A S D =&gt; mover a cobra | Espaço =&gt; Pausar/Retomar
         | Enter =&gt; Reiniciar

@@ -1,6 +1,9 @@
 import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className="py-2 section-padding border-t border-border">
       <div className="max-w-4xl mx-auto">
@@ -32,12 +35,12 @@ const Footer = () => {
 
           <div className="space-y-2">
             <p className="text-muted-foreground flex items-center justify-center space-x-2">
-              <span>Construído com</span>
+              <span>{t('footer.builtWith')}</span>
               <Heart className="w-4 h-4 text-blue-500" />
-              <span>por JPmoreira</span>
+              <span>{t('footer.by')}</span>
             </p>
             <p className="text-muted-foreground text-sm">
-              © 2025 Todos os direitos reservados.
+              {t('footer.copyright')}
             </p>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, useCallback } from 'react';
+import { useRef, useEffect, useState, useCallback } from 'react';
 import * as THREE from 'three';
 import './style/SurvivorRPG.css';
 
@@ -1112,14 +1112,14 @@ const SurvivorRPG = () => {
           <p>Escolha uma melhoria:</p>
           <div className="upgrade-choices">
             {upgradeChoices.map((upgrade, index) => (
-              <div
+              <button
                 key={index}
                 className="upgrade-card"
                 onClick={() => applyUpgrade(upgrade)}
               >
                 <h3>{upgrade.title}</h3>
                 <p>{upgrade.description}</p>
-              </div>
+              </button>
             ))}
           </div>
         </div>
