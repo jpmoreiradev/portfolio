@@ -130,5 +130,56 @@
     "builtWith": "Built with",
     "by": "by JPmoreira",
     "copyright": "© 2025 All rights reserved."
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "viewAll": "View all projects",
+    "tooltips": {
+      "github": "View source code on GitHub",
+      "live": "Access online demo"
+    },
+    "dialog": {
+      "notAvailable": "This project is not yet available online, but you can view the source code on GitHub."
+    },
+    "items": {
+      "cliniqueue": {
+        "description": "Complete queue management system for medical clinics with scheduling features, real-time queue control and display panels. Supports multiple rooms, healthcare professionals and real-time synchronization.",
+        "detailedInfo": "CliniQueue is a robust queue management system for medical clinics, developed with Next.js 15 and TypeScript. The system offers complete scheduling functionalities, real-time queue control with Pusher (WebSockets), public display panels, and administrative dashboard. It includes patient management, healthcare professionals, rooms and appointment status control. The architecture uses PostgreSQL with Prisma ORM, authentication with NextAuth.js, and modern UI with shadcn/ui. The project implements complete REST APIs for all entities and real-time synchronization between different interfaces."
+      },
+      "weatherDashboard": {
+        "description": "A real-time weather forecast panel that displays detailed weather information, including temperature, humidity, wind speed and forecast for the coming days. Integrated with OpenWeatherMap API.",
+        "detailedInfo": "A complete weather dashboard that allows users to search weather information for any city in the world. The project uses the OpenWeatherMap API to obtain real-time data, including current temperature, feels like temperature, humidity, atmospheric pressure, wind speed and forecast for the next 5 days. The interface is responsive and intuitive, with smooth animations and dynamic icons that change according to weather conditions. Implements debounce in search to optimize API calls and stores favorite cities in localStorage."
+      },
+      "passwordGenerator": {
+        "description": "A tool to generate secure passwords with customizable options for length, inclusion of numbers, symbols and uppercase letters."
+      },
+      "investmentCalculator": {
+        "description": "An interactive calculator that simulates investments with monthly contributions, compound interest rate and income tax discount. Built with React."
+      },
+      "ecommerceRails": {
+        "description": "A complete e-commerce platform developed with Ruby on Rails, with shopping cart features, product management, and payment integration.",
+        "detailedInfo": "This is a full-stack e-commerce project built with Ruby on Rails. It includes an admin panel to manage products, orders and users. Integration with Stripe allows secure credit card payments. The project was extensively tested with RSpec and Capybara to ensure code quality."
+      },
+      "survivorRpg": {
+        "description": "A text-based survival RPG game. The player needs to make decisions to survive in a post-apocalyptic world."
+      },
+      "financingCalculator": {
+        "description": "An interactive calculator that simulates financing based on total value, down payment, interest rate and term. Displays monthly installments, total paid, interest and amortization table. Built with React"
+      },
+      "cpfGenerator": {
+        "description": "A tool to generate and validate CPFs. Ideal for developers and testers who need valid CPF numbers for their projects."
+      },
+      "snakeGame": {
+        "description": "A classic snake game developed with React and TypeScript. The goal is to eat as many fruits as possible without hitting the walls or yourself."
+      },
+      "nestjsCrud": {
+        "description": "CRUD API with NestJS, Prisma and secure authentication. Encrypted passwords with bcrypt and scalable architecture with TypeScript.",
+        "detailedInfo": "A robust RESTful API built with NestJS, following software architecture best practices. Uses Prisma as ORM to interact with PostgreSQL database. Authentication is done with JWT and passwords are securely stored using bcrypt. The project is fully configured with ESLint and Prettier to maintain code quality and consistency."
+      },
+      "unistore": {
+        "description": "In this project, an online store was developed using the Mercado Livre API. The idea was to take advantage of the features and wide catalog of products available on the platform to build your own virtual store.",
+        "detailedInfo": "An e-commerce platform that consumes the Mercado Livre API to search for products, display details and allow users to make purchases. The backend was built with Node.js and Express, and Sequelize was used as ORM. User authentication is implemented with JWT."
+      }
+    }
   }
 }

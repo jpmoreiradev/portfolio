@@ -28,7 +28,7 @@ const IndexPage = () => {
         <Hero />
         <About />
         <Experience />
-        <Projects limit={5} showWeatherComponent={true} />
+        <Projects limit={5} showWeatherComponent={false} />
         <Contact />
       </main>
       <Footer />

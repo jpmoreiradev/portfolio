@@ -366,7 +366,9 @@ const WeatherDashboard = () => {
                             </div>
                             <p className="text-lg font-bold">
                               {Math.round(
-                                forecastData.daily.temperature_2m_max[index + 1],
+                                forecastData.daily.temperature_2m_max[
+                                  index + 1
+                                ],
                               )}
                               °C
                             </p>

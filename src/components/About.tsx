@@ -5,7 +5,7 @@ const About = () => {
 
   const mainSkills = [
     { name: 'Ruby on Rails', link: 'https://rubyonrails.org/' },
-    { name: 'React', link: 'https://reactjs.org/' },
+    { name: 'Vue.js', link: 'https://vuejs.org/' },
     { name: 'NestJS', link: 'https://nestjs.com/' },
     { name: 'Next.js', link: 'https://nextjs.org/' },
   ];

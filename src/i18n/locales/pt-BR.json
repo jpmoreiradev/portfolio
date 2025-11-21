@@ -130,5 +130,56 @@
     "builtWith": "Construído com",
     "by": "por JPmoreira",
     "copyright": "© 2025 Todos os direitos reservados."
+  },
+  "projects": {
+    "title": "Projetos em Destaque",
+    "viewAll": "Ver todos os projetos",
+    "tooltips": {
+      "github": "Ver código-fonte no GitHub",
+      "live": "Acessar demonstração online"
+    },
+    "dialog": {
+      "notAvailable": "Este projeto ainda não está disponível online, mas você pode ver o código-fonte no GitHub."
+    },
+    "items": {
+      "cliniqueue": {
+        "description": "Sistema completo de gerenciamento de filas para clínicas médicas com recursos de agendamento, controle de filas em tempo real e painéis de exibição. Suporta múltiplas salas, profissionais de saúde e sincronização em tempo real.",
+        "detailedInfo": "CliniQueue é um sistema robusto de gerenciamento de filas para clínicas médicas, desenvolvido com Next.js 15 e TypeScript. O sistema oferece funcionalidades completas de agendamento, controle de filas em tempo real com Pusher (WebSockets), painéis de exibição públicos, e dashboard administrativo. Inclui gestão de pacientes, profissionais de saúde, salas e controle de status de atendimento. A arquitetura utiliza PostgreSQL com Prisma ORM, autenticação com NextAuth.js, e UI moderna com shadcn/ui. O projeto implementa APIs REST completas para todas as entidades e sincronização em tempo real entre diferentes interfaces."
+      },
+      "weatherDashboard": {
+        "description": "Um painel de previsão do tempo em tempo real que exibe informações meteorológicas detalhadas, incluindo temperatura, umidade, velocidade do vento e previsão para os próximos dias. Integrado com API OpenWeatherMap.",
+        "detailedInfo": "Um dashboard completo de clima que permite aos usuários buscar informações meteorológicas de qualquer cidade do mundo. O projeto utiliza a API do OpenWeatherMap para obter dados em tempo real, incluindo temperatura atual, sensação térmica, umidade, pressão atmosférica, velocidade do vento e previsão para os próximos 5 dias. A interface é responsiva e intuitiva, com animações suaves e ícones dinâmicos que mudam de acordo com as condições climáticas. Implementa debounce na busca para otimizar chamadas à API e armazena cidades favoritas no localStorage."
+      },
+      "passwordGenerator": {
+        "description": "Uma ferramenta para gerar senhas seguras com opções personalizáveis de comprimento, inclusão de números, símbolos e letras maiúsculas."
+      },
+      "investmentCalculator": {
+        "description": "Uma calculadora interativa que simula investimentos com aportes mensais, taxa de juros composta e desconto de imposto de renda. Desenvolvida com React."
+      },
+      "ecommerceRails": {
+        "description": "Uma plataforma de e-commerce completa desenvolvida com Ruby on Rails, com funcionalidades de carrinho de compras, gerenciamento de produtos, e integração de pagamentos.",
+        "detailedInfo": "Este é um projeto de e-commerce full-stack construído com Ruby on Rails. Ele inclui um painel de administração para gerenciar produtos, pedidos e usuários. A integração com o Stripe permite pagamentos seguros com cartão de crédito. O projeto foi testado extensivamente com RSpec e Capybara para garantir a qualidade do código."
+      },
+      "survivorRpg": {
+        "description": "Um jogo de RPG de sobrevivência em texto. O jogador precisa tomar decisões para sobreviver em um mundo pós-apocalíptico."
+      },
+      "financingCalculator": {
+        "description": "Uma calculadora interativa que simula financiamentos com base em valor total, entrada, taxa de juros e prazo. Exibe parcelas mensais, total pago, juros e tabela de amortização. Desenvolvida com React"
+      },
+      "cpfGenerator": {
+        "description": "Uma ferramenta para gerar e validar CPFs. Ideal para desenvolvedores e testadores que precisam de números de CPF válidos para seus projetos."
+      },
+      "snakeGame": {
+        "description": "Um jogo clássico da cobrinha desenvolvido com React e TypeScript. O objetivo é comer o máximo de frutas possível sem bater nas paredes ou em si mesmo."
+      },
+      "nestjsCrud": {
+        "description": "API CRUD com NestJS, Prisma e autenticação segura. Senhas criptografadas com bcrypt e arquitetura escalável com TypeScript.",
+        "detailedInfo": "Uma API RESTful robusta construída com NestJS, seguindo as melhores práticas de arquitetura de software. Utiliza o Prisma como ORM para interagir com o banco de dados PostgreSQL. A autenticação é feita com JWT e as senhas são armazenadas de forma segura usando bcrypt. O projeto é totalmente configurado com ESLint e Prettier para manter a qualidade e a consistência do código."
+      },
+      "unistore": {
+        "description": "Neste projeto, foi desenvolvida uma loja online utilizando a API do Mercado Livre. A ideia era aproveitar as funcionalidades e o amplo catálogo de produtos disponíveis na plataforma para construir uma loja virtual própria.",
+        "detailedInfo": "Uma plataforma de e-commerce que consome a API do Mercado Livre para buscar produtos, exibir detalhes e permitir que os usuários façam compras. O backend foi construído com Node.js e Express, e o Sequelize foi usado como ORM. A autenticação de usuário é implementada com JWT."
+      }
+    }
   }
 }

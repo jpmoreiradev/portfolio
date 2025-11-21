@@ -1,4 +1,5 @@
 import { Github, ExternalLink } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import WeatherDashboard from '@/components/WeatherDashboard';
 
 import uniStoreImg from '../assets/images/sessionProjects/unistore.png';
@@ -11,6 +12,8 @@ import ecommerceRailsImg from '../assets/images/sessionProjects/ecomercerails.pn
 import snakeGameImg from '../assets/images/sessionProjects/snakegame.png';
 import survivorRpgImg from '../assets/images/sessionProjects/survivorrpg.png';
 import weatherDashboardImg from '../assets/images/sessionProjects/weatherdashboard.png';
+import cliniqueueImg from '../assets/images/sessionProjects/cliniqueue.png';
+
 import {
   Dialog,
   DialogContent,
@@ -20,18 +23,44 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 
 interface ProjectsProps {
   limit?: number;
   showWeatherComponent?: boolean;
 }
 
-const Projects: React.FC<ProjectsProps> = ({ limit, showWeatherComponent = false }) => {
+const Projects: React.FC<ProjectsProps> = ({
+  limit,
+  showWeatherComponent = false,
+}) => {
+  const { t } = useTranslation();
+
   const rawProjects = [
     {
+      title: 'CliniQueue',
+      translationKey: 'cliniqueue',
+      image: cliniqueueImg,
+      technologies: [
+        'Next.js',
+        'TypeScript',
+        'TailwindCSS',
+        'Prisma',
+        'PostgreSQL',
+        'NextAuth.js',
+        'Pusher',
+      ],
+      github: 'https://github.com/jpmoreiradev/cliniqueue',
+      live: 'https://cliniqueue-seven.vercel.app/',
+    },
+    {
       title: 'Weather Dashboard',
-      description:
-        'Um painel de previsão do tempo em tempo real que exibe informações meteorológicas detalhadas, incluindo temperatura, umidade, velocidade do vento e previsão para os próximos dias. Integrado com API OpenWeatherMap.',
+      translationKey: 'weatherDashboard',
       image: weatherDashboardImg,
       technologies: [
         'React',
@@ -44,13 +73,10 @@ const Projects: React.FC<ProjectsProps> = ({ limit, showWeatherComponent = false
       github: 'https://github.com/jpmoreiradev/weather-dashboard',
       live: '/projects/weather-dashboard',
       showInIntro: false,
-      detailedInfo:
-        'Um dashboard completo de clima que permite aos usuários buscar informações meteorológicas de qualquer cidade do mundo. O projeto utiliza a API do OpenWeatherMap para obter dados em tempo real, incluindo temperatura atual, sensação térmica, umidade, pressão atmosférica, velocidade do vento e previsão para os próximos 5 dias. A interface é responsiva e intuitiva, com animações suaves e ícones dinâmicos que mudam de acordo com as condições climáticas. Implementa debounce na busca para otimizar chamadas à API e armazena cidades favoritas no localStorage.',
     },
     {
       title: 'Gerador de Senha',
-      description:
-        'Uma ferramenta para gerar senhas seguras com opções personalizáveis de comprimento, inclusão de números, símbolos e letras maiúsculas.',
+      translationKey: 'passwordGenerator',
       image: passwordGeneratorImg,
       technologies: ['React', 'TypeScript', 'TailwindCSS', 'Hooks', 'Vite'],
       github:
@@ -58,29 +84,8 @@ const Projects: React.FC<ProjectsProps> = ({ limit, showWeatherComponent = false
       live: '/projects/password-generator',
     },
     {
-      title: 'Survivor RPG',
-      description:
-        'Um jogo de RPG de sobrevivência em texto. O jogador precisa tomar decisões para sobreviver em um mundo pós-apocalíptico.',
-      image: survivorRpgImg,
-      technologies: ['React', 'TypeScript', 'TailwindCSS', 'Hooks', 'Vite'],
-      github:
-        'https://github.com/jpmoreiradev/portfolio/blob/main/src/components/projects/SurvivorRPG.tsx',
-      live: '/projects/survivor-rpg',
-    },
-    {
-      title: 'Gerador e Validador de CPF',
-      description:
-        'Uma ferramenta para gerar e validar CPFs. Ideal para desenvolvedores e testadores que precisam de números de CPF válidos para seus projetos.',
-      image: cpfGeneratorImg,
-      technologies: ['React', 'TypeScript', 'TailwindCSS', 'Hooks', 'Vite'],
-      github:
-        'https://github.com/jpmoreiradev/portfolio/blob/main/src/components/projects/CpfGenerator.tsx',
-      live: '/projects/cpf-generator',
-    },
-    {
       title: 'Calculadora de Investimento',
-      description:
-        'Uma calculadora interativa que simula investimentos com aportes mensais, taxa de juros composta e desconto de imposto de renda. Desenvolvida com React.',
+      translationKey: 'investmentCalculator',
       image: investmentCalculatorImg,
       technologies: ['React', 'TypeScript', 'TailwindCSS', 'Hooks', 'Vite'],
       github:
@@ -89,8 +94,7 @@ const Projects: React.FC<ProjectsProps> = ({ limit, showWeatherComponent = false
     },
     {
       title: 'E-commerce com Ruby on Rails',
-      description:
-        'Uma plataforma de e-commerce completa desenvolvida com Ruby on Rails, com funcionalidades de carrinho de compras, gerenciamento de produtos, e integração de pagamentos.',
+      translationKey: 'ecommerceRails',
       image: ecommerceRailsImg,
       technologies: [
         'Ruby on Rails',
@@ -101,13 +105,19 @@ const Projects: React.FC<ProjectsProps> = ({ limit, showWeatherComponent = false
         'Capybara',
       ],
       github: 'https://github.com/jpmoreiradev/rails-ecommerce',
-      detailedInfo:
-        'Este é um projeto de e-commerce full-stack construído com Ruby on Rails. Ele inclui um painel de administração para gerenciar produtos, pedidos e usuários. A integração com o Stripe permite pagamentos seguros com cartão de crédito. O projeto foi testado extensivamente com RSpec e Capybara para garantir a qualidade do código.',
+    },
+    {
+      title: 'Survivor RPG',
+      translationKey: 'survivorRpg',
+      image: survivorRpgImg,
+      technologies: ['React', 'TypeScript', 'TailwindCSS', 'Hooks', 'Vite'],
+      github:
+        'https://github.com/jpmoreiradev/portfolio/blob/main/src/components/projects/SurvivorRPG.tsx',
+      live: '/projects/survivor-rpg',
     },
     {
       title: 'Calculadora de Financiamento',
-      description:
-        'Uma calculadora interativa que simula financiamentos com base em valor total, entrada, taxa de juros e prazo. Exibe parcelas mensais, total pago, juros e tabela de amortização. Desenvolvida com React',
+      translationKey: 'financingCalculator',
       image: financingCalculatorImg,
       technologies: ['React', 'TypeScript', 'TailwindCSS', 'Hooks', 'Vite'],
       github:
@@ -115,9 +125,17 @@ const Projects: React.FC<ProjectsProps> = ({ limit, showWeatherComponent = false
       live: '/projects/financing-calculator',
     },
     {
+      title: 'Gerador e Validador de CPF',
+      translationKey: 'cpfGenerator',
+      image: cpfGeneratorImg,
+      technologies: ['React', 'TypeScript', 'TailwindCSS', 'Hooks', 'Vite'],
+      github:
+        'https://github.com/jpmoreiradev/portfolio/blob/main/src/components/projects/CpfGenerator.tsx',
+      live: '/projects/cpf-generator',
+    },
+    {
       title: 'Snake Game',
-      description:
-        'Um jogo clássico da cobrinha desenvolvido com React e TypeScript. O objetivo é comer o máximo de frutas possível sem bater nas paredes ou em si mesmo.',
+      translationKey: 'snakeGame',
       image: snakeGameImg,
       technologies: ['React', 'TypeScript', 'TailwindCSS', 'Hooks', 'Vite'],
       github:
@@ -126,8 +144,7 @@ const Projects: React.FC<ProjectsProps> = ({ limit, showWeatherComponent = false
     },
     {
       title: 'NestJS CRUD API',
-      description:
-        'API CRUD com NestJS, Prisma e autenticação segura. Senhas criptografadas com bcrypt e arquitetura escalável com TypeScript.',
+      translationKey: 'nestjsCrud',
       image: crudNestJsImg,
       technologies: [
         'NestJS',
@@ -139,13 +156,10 @@ const Projects: React.FC<ProjectsProps> = ({ limit, showWeatherComponent = false
         'Bcryptjs',
       ],
       github: 'https://github.com/jpmoreiradev/nestjs-crud',
-      detailedInfo:
-        'Uma API RESTful robusta construída com NestJS, seguindo as melhores práticas de arquitetura de software. Utiliza o Prisma como ORM para interagir com o banco de dados PostgreSQL. A autenticação é feita com JWT e as senhas são armazenadas de forma segura usando bcrypt. O projeto é totalmente configurado com ESLint e Prettier para manter a qualidade e a consistência do código.',
     },
     {
       title: 'UNISTORE E-commerce Platform',
-      description:
-        'Neste projeto, foi desenvolvida uma loja online utilizando a API do Mercado Livre. A ideia era aproveitar as funcionalidades e o amplo catálogo de produtos disponíveis na plataforma para construir uma loja virtual própria.',
+      translationKey: 'unistore',
       image: uniStoreImg,
       technologies: [
         'Axios',
@@ -157,8 +171,6 @@ const Projects: React.FC<ProjectsProps> = ({ limit, showWeatherComponent = false
         'Sequelize',
       ],
       github: 'https://github.com/jpmoreiradev/unistore',
-      detailedInfo:
-        'Uma plataforma de e-commerce que consome a API do Mercado Livre para buscar produtos, exibir detalhes e permitir que os usuários façam compras. O backend foi construído com Node.js e Express, e o Sequelize foi usado como ORM. A autenticação de usuário é implementada com JWT.',
     },
   ];
 
@@ -192,82 +204,151 @@ const Projects: React.FC<ProjectsProps> = ({ limit, showWeatherComponent = false
     Capybara: 'https://teamcapybara.github.io/capybara/',
     PostgreSQL: 'https://www.postgresql.org/',
     'OpenWeatherMap API': 'https://openweathermap.org/api',
+    'Next.js': 'https://nextjs.org/',
+    'NextAuth.js': 'https://next-auth.js.org/',
+    Pusher: 'https://pusher.com/',
   };
 
   return (
-    <section id="projetos" className="py-20 section-padding">
-      <div className="max-w-6xl mx-auto">
-        <div className="space-y-12">
-          <div className="text-center space-y-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-              Projetos em Destaque
-            </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
-          </div>
+    <TooltipProvider>
+      <section id="projetos" className="py-20 section-padding">
+        <div className="max-w-6xl mx-auto">
+          <div className="space-y-12">
+            <div className="text-center space-y-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+                {t('projects.title')}
+              </h2>
+              <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+            </div>
 
-          {/* Mostra o componente WeatherDashboard apenas se showWeatherComponent for true */}
-          {showWeatherComponent && <WeatherDashboard />}
+            {/* Mostra o componente WeatherDashboard apenas se showWeatherComponent for true */}
+            {showWeatherComponent && <WeatherDashboard />}
 
-          <div className="space-y-16">
-            {projectsToRender.map((project, index) => {
-              const hasLive = !!project.live;
+            <div className="space-y-16">
+              {projectsToRender.map((project, index) => {
+                const hasLive = !!project.live;
+                const isCliniQueue = project.title === 'CliniQueue';
+                const borderColor = isCliniQueue
+                  ? 'border-[#6522B5]'
+                  : 'border-green-500';
 
-              return (
-                <div
-                  key={index}
-                  className={`grid md:grid-cols-2 gap-8 items-center animate-fade-in ${
-                    index % 2 === 1 ? 'md:grid-flow-col-dense' : ''
-                  } ${hasLive ? 'border-2 border-green-500 shadow-lg rounded-lg' : ''}`}
-                >
+                const description = t(
+                  `projects.items.${project.translationKey}.description`,
+                );
+                const detailedInfo = t(
+                  `projects.items.${project.translationKey}.detailedInfo`,
+                  { defaultValue: description },
+                );
+
+                return (
                   <div
-                    className={`relative group ${
-                      index % 2 === 1 ? 'md:col-start-2' : ''
-                    }`}
+                    key={index}
+                    className={`grid md:grid-cols-2 gap-8 items-center animate-fade-in ${
+                      index % 2 === 1 ? 'md:grid-flow-col-dense' : ''
+                    } ${hasLive ? `border-2 ${borderColor} shadow-lg rounded-lg` : ''}`}
                   >
-                    {project.live ? (
-                      <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <div className="aspect-video rounded-lg overflow-hidden bg-card border border-border relative">
-                          <img
-                            src={project.image}
-                            alt={project.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                          />
-                          {hasLive && (
-                            <span className="absolute top-2 left-2 bg-green-500 text-white text-xs font-semibold px-2 py-1 rounded">
-                              LIVE
-                            </span>
-                          )}
-                        </div>
-                        <div className="absolute inset-0 bg-primary/20 rounded-lg group-hover:bg-transparent transition-colors duration-300"></div>
-                      </a>
-                    ) : (
-                      <Dialog>
-                        <DialogTrigger asChild>
-                          <div className="aspect-video rounded-lg overflow-hidden bg-card border border-border relative cursor-pointer">
+                    <div
+                      className={`relative group ${
+                        index % 2 === 1 ? 'md:col-start-2' : ''
+                      }`}
+                    >
+                      {project.live ? (
+                        <a
+                          href={project.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <div className="aspect-video rounded-lg overflow-hidden bg-card border border-border relative">
                             <img
                               src={project.image}
                               alt={project.title}
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                             />
-                            <div className="absolute inset-0 bg-primary/20 rounded-lg group-hover:bg-transparent transition-colors duration-300"></div>
+                            {hasLive && (
+                              <span
+                                className="absolute top-2 left-2 text-white text-xs font-semibold px-2 py-1 rounded"
+                                style={{
+                                  backgroundColor: isCliniQueue
+                                    ? '#6522B5'
+                                    : '#22c55e',
+                                }}
+                              >
+                                LIVE
+                              </span>
+                            )}
                           </div>
-                        </DialogTrigger>
-                        <DialogContent className="sm:max-w-[425px]">
-                          <DialogHeader>
-                            <DialogTitle>{project.title}</DialogTitle>
-                            <DialogDescription>
-                              {project.detailedInfo || project.description}
-                              <p className="mt-4 text-sm text-primary font-semibold">
-                                Este projeto ainda não está disponível online,
-                                mas você pode ver o código-fonte no GitHub.
-                              </p>
-                            </DialogDescription>
-                          </DialogHeader>
-                          <DialogFooter className="sm:justify-start">
+                          <div className="absolute inset-0 bg-primary/20 rounded-lg group-hover:bg-transparent transition-colors duration-300"></div>
+                        </a>
+                      ) : (
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <div className="aspect-video rounded-lg overflow-hidden bg-card border border-border relative cursor-pointer">
+                              <img
+                                src={project.image}
+                                alt={project.title}
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                              />
+                              <div className="absolute inset-0 bg-primary/20 rounded-lg group-hover:bg-transparent transition-colors duration-300"></div>
+                            </div>
+                          </DialogTrigger>
+                          <DialogContent className="sm:max-w-[425px]">
+                            <DialogHeader>
+                              <DialogTitle>{project.title}</DialogTitle>
+                              <DialogDescription>
+                                {detailedInfo}
+                                <p className="mt-4 text-sm text-primary font-semibold">
+                                  {t('projects.dialog.notAvailable')}
+                                </p>
+                              </DialogDescription>
+                            </DialogHeader>
+                            <DialogFooter className="sm:justify-start">
+                              <a
+                                href={project.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="p-2 rounded-lg border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110"
+                              >
+                                <Github size={20} />
+                              </a>
+                            </DialogFooter>
+                          </DialogContent>
+                        </Dialog>
+                      )}
+                    </div>
+
+                    {/* Conteúdo */}
+                    <div
+                      className={`space-y-4 ${
+                        index % 2 === 1 ? 'md:col-start-1 md:row-start-1' : ''
+                      }`}
+                    >
+                      <div>
+                        <h3 className="text-center text-2xl font-bold text-foreground">
+                          {project.title}
+                        </h3>
+                      </div>
+
+                      <div className="bg-card p-6 rounded-lg border border-border">
+                        <p className="text-muted-foreground">{description}</p>
+                      </div>
+
+                      <div className="flex flex-wrap gap-2">
+                        {project.technologies.map((tech) => (
+                          <a
+                            key={tech}
+                            href={techLinks[tech] || '#'}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-full hover:underline"
+                          >
+                            {tech}
+                          </a>
+                        ))}
+                      </div>
+
+                      <div className="flex space-x-4">
+                        <Tooltip>
+                          <TooltipTrigger asChild>
                             <a
                               href={project.github}
                               target="_blank"
@@ -276,87 +357,53 @@ const Projects: React.FC<ProjectsProps> = ({ limit, showWeatherComponent = false
                             >
                               <Github size={20} />
                             </a>
-                          </DialogFooter>
-                        </DialogContent>
-                      </Dialog>
-                    )}
-                  </div>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>{t('projects.tooltips.github')}</p>
+                          </TooltipContent>
+                        </Tooltip>
 
-                  {/* Conteúdo */}
-                  <div
-                    className={`space-y-4 ${
-                      index % 2 === 1 ? 'md:col-start-1 md:row-start-1' : ''
-                    }`}
+                        {project.live && (
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <a
+                                href={project.live}
+                                rel="noopener noreferrer"
+                                className="p-2 rounded-lg border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110"
+                              >
+                                <ExternalLink size={20} />
+                              </a>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p>{t('projects.tooltips.live')}</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+              {limit && (
+                <div className="text-center">
+                  <a
+                    href="/projects"
+                    rel="noopener noreferrer"
+                    className="text-center inline-flex items-center space-x-2 text-primary hover:text-secondary transition-colors duration-200 group"
                   >
-                    <div>
-                      <h3 className="text-center text-2xl font-bold text-foreground">
-                        {project.title}
-                      </h3>
-                    </div>
-
-                    <div className="bg-card p-6 rounded-lg border border-border">
-                      <p className="text-muted-foreground">
-                        {project.description}
-                      </p>
-                    </div>
-
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech) => (
-                        <a
-                          key={tech}
-                          href={techLinks[tech] || '#'}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-full hover:underline"
-                        >
-                          {tech}
-                        </a>
-                      ))}
-                    </div>
-
-                    <div className="flex space-x-4">
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 rounded-lg border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110"
-                      >
-                        <Github size={20} />
-                      </a>
-
-                      {project.live && (
-                        <a
-                          href={project.live}
-                          rel="noopener noreferrer"
-                          className="p-2 rounded-lg border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110"
-                        >
-                          <ExternalLink size={20} />
-                        </a>
-                      )}
-                    </div>
-                  </div>
+                    <span>{t('projects.viewAll')}</span>
+                    <ExternalLink
+                      size={18}
+                      className="group-hover:translate-x-1 transition-transform duration-200"
+                    />
+                  </a>
                 </div>
-              );
-            })}
-            {limit && (
-              <div className="text-center">
-                <a
-                  href="/projects"
-                  rel="noopener noreferrer"
-                  className="text-center inline-flex items-center space-x-2 text-primary hover:text-secondary transition-colors duration-200 group"
-                >
-                  <span>Ver todos os projetos</span>
-                  <ExternalLink
-                    size={18}
-                    className="group-hover:translate-x-1 transition-transform duration-200"
-                  />
-                </a>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </TooltipProvider>
   );
 };
 

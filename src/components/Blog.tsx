@@ -8,6 +8,14 @@ type Post = {
 
 const posts: Post[] = [
   {
+    id: 29,
+    title: 'Sistema de Internacionalização e Novo Projeto CliniQueue',
+    summary:
+      'Implementei um sistema completo de tradução (i18n) na seção de projetos com suporte para PT-BR e EN. Adicionei o projeto CliniQueue com destaque visual personalizado (borda e badge roxos #6522B5). Criei tooltips interativos nos botões usando Radix UI. Traduzi todos os 11 projetos do portfólio incluindo descrições e informações detalhadas. A arquitetura utiliza react-i18next com fallback automático. Nota: A tradução em inglês dos posts do blog ainda não está funcionando e será implementada em breve.',
+    date: '21 de Janeiro de 2025',
+    emoji: '🌐',
+  },
+  {
     id: 28,
     title: 'Refatorando Código Legado: Um Desafio Necessário',
     summary:
