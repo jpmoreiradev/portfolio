@@ -22,16 +22,23 @@ export const LanguageSwitcher = () => {
     i18n.changeLanguage(lng);
   };
 
-  const currentLanguage = languages.find((lang) => lang.code === i18n.language);
+  const currentLanguage =
+    languages.find((lang) => lang.code === i18n.language) ||
+    languages.find((lang) =>
+      i18n.language?.startsWith(lang.code.split('-')[0]),
+    ) ||
+    languages[0];
 
   const displayLanguageCode =
-    i18n.language === 'en' ? 'EN' : i18n.language.toUpperCase();
+    currentLanguage.code === 'en'
+      ? 'EN'
+      : currentLanguage.code.split('-')[0].toUpperCase();
 
   return (
     <DropdownMenu onOpenChange={setIsDropdownOpen}>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="sm" className="flex items-center gap-1">
-          {currentLanguage?.flag} {displayLanguageCode}{' '}
+          {currentLanguage.flag} {displayLanguageCode}{' '}
           <ChevronDown
             className={`h-4 w-4 transition-transform duration-200 ${
               isDropdownOpen ? 'rotate-180' : 'rotate-0'
@@ -46,7 +53,7 @@ export const LanguageSwitcher = () => {
             key={lang.code}
             onClick={() => changeLanguage(lang.code)}
             className={`cursor-pointer ${
-              currentLanguage?.code === lang.code
+              currentLanguage.code === lang.code
                 ? 'bg-accent text-accent-foreground'
                 : ''
             }`}

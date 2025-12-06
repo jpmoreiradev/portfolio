@@ -63,7 +63,7 @@ const Contact = () => {
                         {t('contact.email')}
                       </p>
                       <p className="text-muted-foreground">
-                        jp02120123@gmail.com
+                        jpmoreira.dev.ti@gmail.com
                       </p>
                     </div>
                   </div>
