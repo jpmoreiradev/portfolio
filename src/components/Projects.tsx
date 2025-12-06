@@ -1,4 +1,4 @@
-import { Github, ExternalLink } from 'lucide-react';
+import { Github, ExternalLink, Lock } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import WeatherDashboard from '@/components/WeatherDashboard';
 
@@ -55,7 +55,6 @@ const Projects: React.FC<ProjectsProps> = ({
         'NextAuth.js',
         'Pusher',
       ],
-      github: 'https://github.com/jpmoreiradev/cliniqueue',
       live: 'https://cliniqueue-seven.vercel.app/',
     },
     {
@@ -105,6 +104,7 @@ const Projects: React.FC<ProjectsProps> = ({
         'Capybara',
       ],
       github: 'https://github.com/jpmoreiradev/rails-ecommerce',
+      liveDisabled: true,
     },
     {
       title: 'Survivor RPG',
@@ -255,8 +255,10 @@ const Projects: React.FC<ProjectsProps> = ({
                       {project.live ? (
                         <a
                           href={project.live}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          {...(isCliniQueue && {
+                            target: '_blank',
+                            rel: 'noopener noreferrer',
+                          })}
                         >
                           <div className="aspect-video rounded-lg overflow-hidden bg-card border border-border relative">
                             <img
@@ -347,35 +349,67 @@ const Projects: React.FC<ProjectsProps> = ({
                       </div>
 
                       <div className="flex space-x-4">
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <a
-                              href={project.github}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="p-2 rounded-lg border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110"
-                            >
-                              <Github size={20} />
-                            </a>
-                          </TooltipTrigger>
-                          <TooltipContent>
-                            <p>{t('projects.tooltips.github')}</p>
-                          </TooltipContent>
-                        </Tooltip>
-
-                        {project.live && (
+                        {project.github ? (
                           <Tooltip>
                             <TooltipTrigger asChild>
                               <a
-                                href={project.live}
+                                href={project.github}
+                                target="_blank"
                                 rel="noopener noreferrer"
-                                className="p-2 rounded-lg border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110"
+                                className="p-2 rounded-lg border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110 relative"
                               >
-                                <ExternalLink size={20} />
+                                <Github size={20} />
                               </a>
                             </TooltipTrigger>
                             <TooltipContent>
-                              <p>{t('projects.tooltips.live')}</p>
+                              <p>{t('projects.tooltips.github')}</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        ) : (
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <div className="p-2 rounded-lg border border-border text-muted-foreground/50 cursor-not-allowed relative">
+                                <Github size={20} />
+                                <Lock
+                                  size={14}
+                                  className="absolute top-1 left-1 bg-background rounded-full p-0.5"
+                                />
+                              </div>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p>
+                                Repositório privado por questão de segurança
+                              </p>
+                            </TooltipContent>
+                          </Tooltip>
+                        )}
+
+                        {(project.live || project.liveDisabled) && (
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              {project.liveDisabled ? (
+                                <div className="p-2 rounded-lg border border-border text-muted-foreground/50 cursor-not-allowed">
+                                  <ExternalLink size={20} />
+                                </div>
+                              ) : (
+                                <a
+                                  href={project.live}
+                                  {...(isCliniQueue && {
+                                    target: '_blank',
+                                    rel: 'noopener noreferrer',
+                                  })}
+                                  className="p-2 rounded-lg border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110"
+                                >
+                                  <ExternalLink size={20} />
+                                </a>
+                              )}
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p>
+                                {project.liveDisabled
+                                  ? 'Aplicação não hospedada'
+                                  : t('projects.tooltips.live')}
+                              </p>
                             </TooltipContent>
                           </Tooltip>
                         )}
