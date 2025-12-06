@@ -116,4 +116,12 @@
   .section-padding {
     @apply px-6 md:px-12 lg:px-20 xl:px-32;
   }
+
+  .highlight-email {
+    background-color: hsl(var(--primary) / 0.2) !important;
+    border: 2px solid hsl(var(--primary)) !important;
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.4) !important;
+    transform: scale(1.05) !important;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite !important;
+  }
 }

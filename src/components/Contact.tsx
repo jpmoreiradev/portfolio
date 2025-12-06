@@ -54,7 +54,11 @@ const Contact = () => {
                   {t('contact.letsChat')}
                 </h3>
                 <div className="space-y-4">
-                  <div className="flex items-center space-x-4">
+                  <a
+                    id="email-info"
+                    href="mailto:jpmoreira.dev.ti@gmail.com"
+                    className="flex items-center space-x-4 transition-all duration-300 hover:opacity-80 cursor-pointer"
+                  >
                     <div className="p-3 rounded-lg bg-primary/10 text-primary">
                       <Mail size={20} />
                     </div>
@@ -66,9 +70,14 @@ const Contact = () => {
                         jpmoreira.dev.ti@gmail.com
                       </p>
                     </div>
-                  </div>
+                  </a>
 
-                  <div className="flex items-center space-x-4">
+                  <a
+                    href="https://wa.me/5588997307495"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-4 transition-all duration-300 hover:opacity-80 cursor-pointer"
+                  >
                     <div className="p-3 rounded-lg bg-primary/10 text-primary">
                       <Phone size={20} />
                     </div>
@@ -80,9 +89,14 @@ const Contact = () => {
                         +55 (88) 9 9730-7495
                       </p>
                     </div>
-                  </div>
+                  </a>
 
-                  <div className="flex items-center space-x-4">
+                  <a
+                    href="https://www.google.com/maps/place/Pra%C3%A7a+25+de+Janeiro+-+Centro,+Banabui%C3%BA+-+CE,+63960-000/@-5.3041295,-38.9275644,14.88z/data=!4m15!1m8!3m7!1s0x7c74c3f464c783f:0x4661c60a0c6b37ca!2sFortaleza+-+Cear%C3%A1!3b1!8m2!3d-3.7327203!4d-38.5270134!16zL20vMDJfOW4!3m5!1s0x7bc6b96b6f2c8f5:0x9582f9eed0297bcc!8m2!3d-5.3060008!4d-38.9202383!16s%2Fg%2F11bw3yl1xq?entry=ttu&g_ep=EgoyMDI1MTIwMi4wIKXMDSoASAFQAw%3D%3D"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-4 transition-all duration-300 hover:opacity-80 cursor-pointer"
+                  >
                     <div className="p-3 rounded-lg bg-primary/10 text-primary">
                       <MapPin size={20} />
                     </div>
@@ -94,7 +108,7 @@ const Contact = () => {
                         {t('contact.locationValue')}
                       </p>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
             </div>

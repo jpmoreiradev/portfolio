@@ -67,6 +67,24 @@ const Hero = () => {
           </a>
           <a
             href="#contato"
+            onClick={(e) => {
+              e.preventDefault();
+              // Navega para a seção de contato
+              const contatoSection = document.getElementById('contato');
+              if (contatoSection) {
+                contatoSection.scrollIntoView({ behavior: 'smooth' });
+              }
+              // Destaca o email após scroll
+              setTimeout(() => {
+                const emailInfo = document.getElementById('email-info');
+                if (emailInfo) {
+                  emailInfo.classList.add('highlight-email');
+                  setTimeout(() => {
+                    emailInfo.classList.remove('highlight-email');
+                  }, 3000);
+                }
+              }, 800);
+            }}
             className="p-3 rounded-lg border border-border hover:border-primary text-muted-foreground hover:text-primary transition-all duration-200 hover:scale-110"
           >
             <Mail size={24} />
