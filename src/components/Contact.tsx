@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Copy, Check } from 'lucide-react';
 import { sendForm } from '@emailjs/browser';
 import { useTranslation } from 'react-i18next';
 
@@ -9,6 +9,8 @@ const Contact = () => {
   const [loading, setLoading] = useState(false);
   const [messageSent, setMessageSent] = useState(false);
   const [error, setError] = useState(null);
+  const [copiedEmail, setCopiedEmail] = useState(false);
+  const [copiedPhone, setCopiedPhone] = useState(false);
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -33,6 +35,18 @@ const Contact = () => {
       });
   };
 
+  const copyToClipboard = (text, type) => {
+    navigator.clipboard.writeText(text).then(() => {
+      if (type === 'email') {
+        setCopiedEmail(true);
+        setTimeout(() => setCopiedEmail(false), 2000);
+      } else if (type === 'phone') {
+        setCopiedPhone(true);
+        setTimeout(() => setCopiedPhone(false), 2000);
+      }
+    });
+  };
+
   return (
     <section id="contato" className="py-20 section-padding bg-muted/30">
       <div className="max-w-4xl mx-auto">
@@ -54,42 +68,62 @@ const Contact = () => {
                   {t('contact.letsChat')}
                 </h3>
                 <div className="space-y-4">
-                  <a
-                    id="email-info"
-                    href="mailto:jpmoreira.dev.ti@gmail.com"
-                    className="flex items-center space-x-4 transition-all duration-300 hover:opacity-80 cursor-pointer"
-                  >
-                    <div className="p-3 rounded-lg bg-primary/10 text-primary">
-                      <Mail size={20} />
-                    </div>
-                    <div>
-                      <p className="text-foreground font-medium">
-                        {t('contact.email')}
-                      </p>
-                      <p className="text-muted-foreground">
-                        jpmoreira.dev.ti@gmail.com
-                      </p>
-                    </div>
-                  </a>
+                  <div className="flex items-center justify-between group">
+                    <a
+                      id="email-info"
+                      href="mailto:jpmoreira.dev.ti@gmail.com"
+                      className="flex items-center space-x-4 transition-all duration-300 hover:opacity-80 cursor-pointer flex-1"
+                    >
+                      <div className="p-3 rounded-lg bg-primary/10 text-primary">
+                        <Mail size={20} />
+                      </div>
+                      <div>
+                        <p className="text-foreground font-medium">
+                          {t('contact.email')}
+                        </p>
+                        <p className="text-muted-foreground">
+                          jpmoreira.dev.ti@gmail.com
+                        </p>
+                      </div>
+                    </a>
+                    <button
+                      onClick={() =>
+                        copyToClipboard('jpmoreira.dev.ti@gmail.com', 'email')
+                      }
+                      className="p-2 rounded-lg hover:bg-primary/10 transition-colors duration-200 text-muted-foreground hover:text-primary"
+                      title="Copiar email"
+                    >
+                      {copiedEmail ? <Check size={20} /> : <Copy size={20} />}
+                    </button>
+                  </div>
 
-                  <a
-                    href="https://wa.me/5588997307495"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-4 transition-all duration-300 hover:opacity-80 cursor-pointer"
-                  >
-                    <div className="p-3 rounded-lg bg-primary/10 text-primary">
-                      <Phone size={20} />
-                    </div>
-                    <div>
-                      <p className="text-foreground font-medium">
-                        {t('contact.phone')}
-                      </p>
-                      <p className="text-muted-foreground">
-                        +55 (88) 9 9730-7495
-                      </p>
-                    </div>
-                  </a>
+                  <div className="flex items-center justify-between group">
+                    <a
+                      href="https://wa.me/5588997307495"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-4 transition-all duration-300 hover:opacity-80 cursor-pointer flex-1"
+                    >
+                      <div className="p-3 rounded-lg bg-primary/10 text-primary">
+                        <Phone size={20} />
+                      </div>
+                      <div>
+                        <p className="text-foreground font-medium">
+                          {t('contact.phone')}
+                        </p>
+                        <p className="text-muted-foreground">
+                          +55 (88) 9 9730-7495
+                        </p>
+                      </div>
+                    </a>
+                    <button
+                      onClick={() => copyToClipboard('+5588997307495', 'phone')}
+                      className="p-2 rounded-lg hover:bg-primary/10 transition-colors duration-200 text-muted-foreground hover:text-primary"
+                      title="Copiar telefone"
+                    >
+                      {copiedPhone ? <Check size={20} /> : <Copy size={20} />}
+                    </button>
+                  </div>
 
                   <a
                     href="https://www.google.com/maps/place/Pra%C3%A7a+25+de+Janeiro+-+Centro,+Banabui%C3%BA+-+CE,+63960-000/@-5.3041295,-38.9275644,14.88z/data=!4m15!1m8!3m7!1s0x7c74c3f464c783f:0x4661c60a0c6b37ca!2sFortaleza+-+Cear%C3%A1!3b1!8m2!3d-3.7327203!4d-38.5270134!16zL20vMDJfOW4!3m5!1s0x7bc6b96b6f2c8f5:0x9582f9eed0297bcc!8m2!3d-5.3060008!4d-38.9202383!16s%2Fg%2F11bw3yl1xq?entry=ttu&g_ep=EgoyMDI1MTIwMi4wIKXMDSoASAFQAw%3D%3D"
