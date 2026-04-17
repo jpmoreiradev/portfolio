@@ -2,8 +2,37 @@ import { useState } from 'react';
 import { ExternalLink } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
+function calculateDuration(startDate: string, endDate?: string, lang?: string): string {
+  if (!startDate) return '';
+
+  const [startYear, startMonth] = startDate.split('-').map(Number);
+  const end = endDate
+    ? { year: Number(endDate.split('-')[0]), month: Number(endDate.split('-')[1]) }
+    : { year: new Date().getFullYear(), month: new Date().getMonth() + 1 };
+
+  const totalMonths = (end.year - startYear) * 12 + (end.month - startMonth) + 1;
+  const years = Math.floor(totalMonths / 12);
+  const months = totalMonths % 12;
+
+  const isPt = lang?.startsWith('pt');
+
+  if (years > 0 && months > 0) {
+    return isPt
+      ? `${years} ${years === 1 ? 'ano' : 'anos'} e ${months} ${months === 1 ? 'mês' : 'meses'}`
+      : `${years} ${years === 1 ? 'year' : 'years'} ${months} ${months === 1 ? 'month' : 'months'}`;
+  }
+  if (years > 0) {
+    return isPt
+      ? `${years} ${years === 1 ? 'ano' : 'anos'}`
+      : `${years} ${years === 1 ? 'year' : 'years'}`;
+  }
+  return isPt
+    ? `${totalMonths} ${totalMonths === 1 ? 'mês' : 'meses'}`
+    : `${totalMonths} ${totalMonths === 1 ? 'month' : 'months'}`;
+}
+
 const Experience = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [activeTab, setActiveTab] = useState(0);
 
   const experiences = t('experience.experiences', {
@@ -13,6 +42,8 @@ const Experience = () => {
     company: string;
     position: string;
     period: string;
+    startDate?: string;
+    endDate?: string;
     description: string[];
     link: string;
   }>;
@@ -64,6 +95,11 @@ const Experience = () => {
                   </h3>
                   <p className="text-muted-foreground text-sm">
                     {experiences[activeTab].period}
+                    {experiences[activeTab].startDate && (
+                      <span className="text-primary/80 ml-2">
+                        · {calculateDuration(experiences[activeTab].startDate!, experiences[activeTab].endDate, i18n.language)}
+                      </span>
+                    )}
                   </p>
                 </div>
 

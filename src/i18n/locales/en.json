@@ -71,6 +71,7 @@
         "company": "Hekate Software 2025",
         "position": "Junior Developer",
         "period": "October 2025 - Present",
+        "startDate": "2025-10",
         "description": [
           "Development, analysis, and code correction across the stack",
           "Participation in various projects using Ruby on Rails, focusing on REST API creation and internal system maintenance",
@@ -88,6 +89,8 @@
         "company": "Moreira Especialidades 2024",
         "position": "Full Stack Developer",
         "period": "Freelancer",
+        "startDate": "2024-01",
+        "endDate": "2024-06",
         "description": [
           "Development of a custom queue management system for patient care",
           "Implementation of call panel and real-time password control",
@@ -101,6 +104,8 @@
         "company": "Esportudo Company 2023",
         "position": "Backend Engineer",
         "period": "April 2023 - October 2023",
+        "startDate": "2023-04",
+        "endDate": "2023-10",
         "description": [
           "Main focus on Backend development with Node.js, JavaScript, and TypeScript",
           "Building optimized endpoints using Express",
@@ -116,6 +121,8 @@
         "company": "Esportudo Company 2022",
         "position": "Developer Intern",
         "period": "January 2022 - April 2023",
+        "startDate": "2022-01",
+        "endDate": "2023-04",
         "description": [
           "Software development with focus on APIs",
           "Use of Node.js, JavaScript, and TypeScript in service creation",
